@@ -68,7 +68,7 @@ export function Hero() {
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
-              href="/resume.pdf"
+              href="/Adeildo_Vieira_Silva_Neto_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex h-12 items-center justify-center gap-2 rounded-md border border-opalite-500/40 px-8 font-medium text-foreground text-shadow-sm transition-all hover:border-opalite-500 hover:bg-opalite-500/10"
