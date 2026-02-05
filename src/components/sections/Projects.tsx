@@ -46,7 +46,7 @@ const projects: Project[] = [
     description: "Deep learning model for automated waste classification using Convolutional Neural Networks. Trained on diverse waste imagery to accurately categorize recyclables, organics, and landfill items, promoting sustainable waste management practices.",
     tags: ["Python", "TensorFlow", "CNN", "Computer Vision"],
     emoji: "♻️",
-    githubUrl: "https://github.com/adeildovieira/waste-classification",
+    githubUrl: "https://github.com/adeildovieira/ML-Class-Final-Project",
     featured: false,
   },
   {

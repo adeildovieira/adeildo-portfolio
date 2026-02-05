@@ -91,10 +91,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050505",
+  // iOS 26 "Liquid Glass" uses this color to tint Safari bars
+  themeColor: "#0a1929",
   width: "device-width",
   initialScale: 1,
-  viewportFit: "cover", // Extend into iOS safe areas
 };
 
 export default function RootLayout({
@@ -103,10 +103,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" style={{ backgroundColor: '#050505' }}>
+    <html lang="en" className="dark" style={{ backgroundColor: '#0a1929' }}>
       <body
         className={`${playfair.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-        style={{ backgroundColor: '#050505' }}
+        style={{ backgroundColor: '#0a1929' }}
       >
         {children}
       </body>
