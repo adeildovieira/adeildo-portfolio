@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s | Adeildo Vieira",
   },
   description:
-    "Software Engineer passionate about building elegant solutions and crafting experiences that matter. New grad ready to make an impact.",
+    "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
   keywords: [
     "Software Engineer",
     "Full Stack Developer",
@@ -50,6 +50,8 @@ export const metadata: Metadata = {
     "TypeScript",
     "Portfolio",
     "New Grad",
+    "Duke University",
+    "BTG Pactual",
   ],
   authors: [{ name: "Adeildo Vieira" }],
   creator: "Adeildo Vieira",
@@ -60,7 +62,7 @@ export const metadata: Metadata = {
     siteName: "Adeildo Vieira",
     title: "Adeildo Vieira | Software Engineer",
     description:
-      "Software Engineer passionate about building elegant solutions and crafting experiences that matter.",
+      "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
     images: [
       {
         url: "/og-image.png", // TODO: Add OG image
@@ -74,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Adeildo Vieira | Software Engineer",
     description:
-      "Software Engineer passionate about building elegant solutions.",
+      "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
     creator: "@adeildovieira",
     images: ["/og-image.png"],
   },
