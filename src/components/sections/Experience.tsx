@@ -35,14 +35,25 @@ const experiences: ExperienceItem[] = [
   },
   {
     type: "work",
-    title: "Software Engineering Intern — Full Stack",
+    title: "Software Engineer Intern — Full Stack",
     organization: "Duke Code+ Program",
     location: "Durham, NC",
     period: "May 2024 — Aug 2024",
     description: [
-      "Used 2M+ Wi-Fi and CO2 sensor data to predict room occupancy with R^2 = 0.72 and 95% accuracy (high/low/no occupation) by training and validating regression models.",
+      "Used 2M+ Wi-Fi logs and CO2 sensor data to predict room occupancy with R^2 = 0.72 and 95% accuracy (high/low/no occupation) by training and validating regression models.",
       "Drove an Agile stakeholder loop to design HVAC scheduling best practices.",
       "Optimized their work day by 2 hours by shipping a REST web service with PostgreSQL backend, providing a live occupancy dashboard in React.js.",
+    ],
+  },
+  {
+    type: "work",
+    title: "3D Printing Operator",
+    organization: "Duke OIT Innovation Co-Lab, Bluesmith Lab",
+    location: "Durham, NC",
+    period: "Jun 2023 — Dec 2024",
+    description: [
+      "Reduced turnaround time from 3+ to 1-2 business days by owning end-to-end 3D printing deliveries for 24 stakeholders, producing 47 custom models for Duke Health research.",
+      "Sustained 95% client satisfaction by standardizing intake/delivery workflows and documenting specs/handoffs to improve reliability and reduce rework.",
     ],
   },
   {
@@ -54,6 +65,7 @@ const experiences: ExperienceItem[] = [
     description: [
       "Relevant coursework: Data Structures, Design of Algorithms, AI, Machine Learning, NLP, Technical and Social Analysis of the Internet, Product Management.",
       "First gen student. Active member of tech communities Diversity++, SHPE, and ColorStack on campus. Duke L1FE. BRASA@Duke.",
+      "Semester abroad at Danish Institute for Study Abroad (DIS) in Stockholm, Sweden focused on AI and Machine Learning practices.",
     ],
     current: true,
   },
@@ -81,8 +93,6 @@ export function Experience() {
 
         <FadeUp delay={0.2}>
           <p className="mb-12 text-lg text-foreground-muted text-shadow-sm">
-            My journey through education and professional experiences that shaped 
-            who I am as a software engineer.
           </p>
         </FadeUp>
       </div>

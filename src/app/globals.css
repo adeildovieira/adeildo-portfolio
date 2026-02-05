@@ -102,6 +102,22 @@ html {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
 
+/* Fade in animation for carousel */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
 /* Infinite scroll animations for skills carousel */
 @keyframes scroll-left {
   0% {

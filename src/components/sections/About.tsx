@@ -98,11 +98,11 @@ export function About() {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-opalite-500" />
-                    Duke University, Class of 2026.
+                    First-gen student at Duke University, Class of 2026.
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-opalite-500" />
-                    Looking for my next challenge in full-stack development and DevOps.
+                    Looking for my next challenge in full-stack dev and DevOps.
                   </li>
                 </ul>
               </div>
