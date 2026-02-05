@@ -12,7 +12,7 @@ I am giving this portfolio to myself as a birthday gift (It's February 20, btw :
 
 ## ✨ What Makes This Special
 
-This isn't your average portfolio template. I wanted something that reflects **who I am** — creative, detail-oriented, and unafraid to push boundaries. Here's what sets it apart:
+I wanted something that reflects **who I am** — creative, detail-oriented, and unafraid to push boundaries. Here's what sets it apart:
 
 - **Cinematic Film Grain Overlay** — A subtle animated grain effect with gate weave, reminiscent of vintage film projectors. It adds texture and personality without being distracting.
 
