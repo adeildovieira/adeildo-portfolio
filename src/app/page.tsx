@@ -1,4 +1,4 @@
-import { FilmGrain, Navigation } from "@/components/ui";
+import { FilmGrain, Navigation, BackToTop } from "@/components/ui";
 import {
   Hero,
   About,
@@ -29,6 +29,9 @@ export default function Home() {
 
       {/* Navigation */}
       <Navigation />
+
+      {/* Back to Top Button (Mobile) */}
+      <BackToTop />
 
       {/* Main Content */}
       <main>

@@ -7,6 +7,7 @@
 
 export { FilmGrain } from "./FilmGrain";
 export { Navigation } from "./Navigation";
+export { BackToTop } from "./BackToTop";
 export { 
   FadeUp, 
   FadeIn, 

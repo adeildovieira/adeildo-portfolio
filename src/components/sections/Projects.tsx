@@ -134,12 +134,22 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Calculate the offset for the carousel
   const getTransformOffset = () => {
-    // Each card is 50% width with gap, so we move by ~51% per index
-    return `translateX(-${currentIndex * 51}%)`;
+    // Mobile: 100% per card, Desktop: 51% per card (2 visible)
+    const offset = isMobile ? 100 : 51;
+    return `translateX(-${currentIndex * offset}%)`;
   };
 
   const nextProject = () => {
@@ -218,16 +228,16 @@ export function Projects() {
 
         {/* Carousel Container */}
         <FadeUp delay={0.3}>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden px-2 md:px-0">
             <div 
               ref={containerRef}
-              className="flex gap-6 transition-transform duration-500 ease-in-out"
+              className="flex gap-4 md:gap-6 transition-transform duration-500 ease-in-out"
               style={{ transform: getTransformOffset() }}
             >
               {extendedProjects.map((project, index) => (
                 <div
                   key={`${project.title}-${index}`}
-                  className="w-[calc(50%-12px)] flex-shrink-0"
+                  className="w-full md:w-[calc(50%-12px)] flex-shrink-0"
                 >
                   <ProjectCard project={project} />
                 </div>

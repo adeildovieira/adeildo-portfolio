@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e2e8f0"/>
+      <stop offset="100%" style="stop-color:#94a3b8"/>
+    </linearGradient>
+  </defs>
+  <!-- Combined AV monogram - shared middle stroke -->
+  <text 
+    x="32" 
+    y="48" 
+    font-family="Playfair Display, Georgia, serif" 
+    font-size="42" 
+    font-weight="700"
+    fill="url(#logoGradient)" 
+    text-anchor="middle"
+    letter-spacing="-12"
+  >AV</text>
+</svg>
