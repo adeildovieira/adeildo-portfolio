@@ -110,7 +110,7 @@ export function Blog() {
         <div className="absolute inset-0 bg-gradient-to-t from-transparent via-opalite-900/5 to-transparent" />
       </div>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-4xl text-center">
         {/* Section Header */}
         <FadeUp>
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400 text-shadow">
@@ -125,13 +125,15 @@ export function Blog() {
         </FadeUp>
 
         <FadeUp delay={0.2}>
-          <p className="mb-12 max-w-2xl text-lg text-foreground-muted text-shadow-sm">
+          <p className="mb-12 text-lg text-foreground-muted text-shadow-sm">
             Sharing what I learn along the way. Technical insights, career reflections, 
             and things I find interesting.
           </p>
         </FadeUp>
+      </div>
 
-        {/* Blog Posts Grid */}
+      {/* Blog Posts Grid */}
+      <div className="mx-auto max-w-6xl">
         <StaggerContainer
           className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
           staggerDelay={0.1}

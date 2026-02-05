@@ -101,3 +101,29 @@ html {
 .text-shadow-lg {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
+
+/* Infinite scroll animations for skills carousel */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+.animate-scroll-slow {
+  animation: scroll-left 40s linear infinite;
+}
+
+.animate-scroll-medium {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-fast {
+  animation: scroll-left 20s linear infinite;
+}
+
+.animate-direction-reverse {
+  animation-direction: reverse;
+}

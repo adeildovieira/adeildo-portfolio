@@ -26,11 +26,6 @@ export function Contact() {
       icon: Linkedin,
     },
     {
-      name: "Twitter",
-      href: "https://twitter.com/adeildovieira",
-      icon: Twitter,
-    },
-    {
       name: "Email",
       href: "mailto:me@adeildovieira.com",
       icon: Mail,
@@ -80,7 +75,7 @@ export function Contact() {
             </h3>
             <p className="inline-flex items-center gap-2 text-foreground-muted text-shadow-sm">
               <MapPin size={18} className="text-opalite-400" />
-              [Your City, State/Country]
+              Durham, NC, USA
             </p>
           </div>
         </FadeUp>

@@ -133,7 +133,7 @@ export function Projects() {
       id="projects"
       className="relative z-10 py-24 px-6 md:py-32"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-4xl text-center">
         {/* Section Header */}
         <FadeUp>
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400 text-shadow">
@@ -148,13 +148,13 @@ export function Projects() {
         </FadeUp>
 
         <FadeUp delay={0.2}>
-          <p className="mb-12 max-w-2xl text-lg text-foreground-muted text-shadow-sm">
-            A selection of projects that showcase my skills and passion for building 
-            software. Each project represents challenges overcome and lessons learned.
+          <p className="mb-12 text-lg text-foreground-muted text-shadow-sm">
           </p>
         </FadeUp>
+      </div>
 
-        {/* Projects Grid */}
+      {/* Projects Grid */}
+      <div className="mx-auto max-w-6xl">
         <StaggerContainer
           className="grid gap-6 md:grid-cols-2"
           staggerDelay={0.1}

@@ -53,7 +53,7 @@ const experiences: ExperienceItem[] = [
     period: "Aug 2022 — May 2026",
     description: [
       "Relevant coursework: Data Structures, Design of Algorithms, AI, Machine Learning, NLP, Technical and Social Analysis of the Internet, Product Management.",
-      "Active member of tech communities Diversity++, SHPE, and ColorStack on campus. BRASA@Duke.",
+      "First gen student. Active member of tech communities Diversity++, SHPE, and ColorStack on campus. Duke L1FE. BRASA@Duke.",
     ],
     current: true,
   },
@@ -65,7 +65,7 @@ export function Experience() {
       id="experience"
       className="relative z-10 py-24 px-6 md:py-32"
     >
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-4xl text-center">
         {/* Section Header */}
         <FadeUp>
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400 text-shadow">
@@ -80,13 +80,15 @@ export function Experience() {
         </FadeUp>
 
         <FadeUp delay={0.2}>
-          <p className="mb-12 max-w-2xl text-lg text-foreground-muted text-shadow-sm">
+          <p className="mb-12 text-lg text-foreground-muted text-shadow-sm">
             My journey through education and professional experiences that shaped 
             who I am as a software engineer.
           </p>
         </FadeUp>
+      </div>
 
-        {/* Timeline */}
+      {/* Timeline */}
+      <div className="mx-auto max-w-4xl">
         <div className="relative">
           {/* Timeline Line */}
           <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-opalite-500/50 via-opalite-500/20 to-transparent md:left-1/2 md:-translate-x-1/2" />

@@ -22,7 +22,7 @@ export function About() {
       id="about"
       className="relative z-10 py-24 px-6 md:py-32"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-4xl text-center">
         {/* Section Header */}
         <FadeUp>
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400 text-shadow">
@@ -36,7 +36,9 @@ export function About() {
             <span className="text-foreground-muted">code second.</span>
           </h2>
         </FadeUp>
+      </div>
 
+      <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Bio Text */}
           <div className="space-y-6">
