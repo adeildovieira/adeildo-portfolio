@@ -82,16 +82,20 @@ export function Navigation() {
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex h-16 items-center justify-between md:h-20">
-            {/* Logo / Name */}
+            {/* Logo / Name - AV Monogram */}
             <a
               href="#"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="text-xl font-semibold tracking-tight text-foreground text-shadow transition-colors hover:text-opalite-400"
+              className="flex items-center transition-opacity hover:opacity-80"
             >
-              Adeildo<span className="text-opalite-500">.</span>
+              <img 
+                src="/header-icon.svg" 
+                alt="AV" 
+                className="h-8 w-auto"
+              />
             </a>
 
             {/* Desktop Navigation */}
