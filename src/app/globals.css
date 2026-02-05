@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* ============================================
+   ADEILDO VIEIRA PORTFOLIO
+   Color Palette: Black + Opalite Blue
+   Theme: Dark mode default with cinematic feel
+   ============================================ */
+
+:root {
+  /* Base colors */
+  --background: #050505;
+  --background-secondary: #0a0a0a;
+  --background-tertiary: #111111;
+  --foreground: #f0f0f0;
+  --foreground-muted: #a0a0a0;
+  
+  /* Opalite Blue - iridescent, ethereal tones */
+  --opalite-50: #e8f4fc;
+  --opalite-100: #d1e9f9;
+  --opalite-200: #a3d3f3;
+  --opalite-300: #75bded;
+  --opalite-400: #47a7e7;
+  --opalite-500: #3b9ae0;
+  --opalite-600: #2d7ab8;
+  --opalite-700: #1f5a90;
+  --opalite-800: #113a68;
+  --opalite-900: #0a2340;
+  
+  /* Accent glow for hover states */
+  --glow-color: rgba(59, 154, 224, 0.4);
+  --glow-color-intense: rgba(59, 154, 224, 0.7);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-opalite-50: var(--opalite-50);
+  --color-opalite-100: var(--opalite-100);
+  --color-opalite-200: var(--opalite-200);
+  --color-opalite-300: var(--opalite-300);
+  --color-opalite-400: var(--opalite-400);
+  --color-opalite-500: var(--opalite-500);
+  --color-opalite-600: var(--opalite-600);
+  --color-opalite-700: var(--opalite-700);
+  --color-opalite-800: var(--opalite-800);
+  --color-opalite-900: var(--opalite-900);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Dark mode is the default - no media query needed */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--opalite-700);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--opalite-600);
+}
+
+/* Text selection styling */
+::selection {
+  background: var(--opalite-600);
+  color: var(--foreground);
+}
