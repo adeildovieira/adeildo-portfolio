@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
 import { FadeUp } from "@/components/ui/Animations";
 
 /**
@@ -66,6 +66,15 @@ export function Hero() {
             >
               View My Work
               <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex h-12 items-center justify-center gap-2 rounded-md border border-opalite-500/40 px-8 font-medium text-foreground text-shadow-sm transition-all hover:border-opalite-500 hover:bg-opalite-500/10"
+            >
+              <FileText size={18} />
+              Resume
             </a>
             <a
               href="#contact"
