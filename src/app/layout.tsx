@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s | Adeildo Vieira",
   },
   description:
-    "Software Engineer passionate about building elegant solutions and crafting experiences that matter. New grad ready to make an impact.",
+    "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
   keywords: [
     "Software Engineer",
     "Full Stack Developer",
@@ -50,6 +50,8 @@ export const metadata: Metadata = {
     "TypeScript",
     "Portfolio",
     "New Grad",
+    "Duke University",
+    "BTG Pactual",
   ],
   authors: [{ name: "Adeildo Vieira" }],
   creator: "Adeildo Vieira",
@@ -60,7 +62,7 @@ export const metadata: Metadata = {
     siteName: "Adeildo Vieira",
     title: "Adeildo Vieira | Software Engineer",
     description:
-      "Software Engineer passionate about building elegant solutions and crafting experiences that matter.",
+      "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
     images: [
       {
         url: "/og-image.png", // TODO: Add OG image
@@ -74,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Adeildo Vieira | Software Engineer",
     description:
-      "Software Engineer passionate about building elegant solutions.",
+      "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
     creator: "@adeildovieira",
     images: ["/og-image.png"],
   },
@@ -91,10 +93,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050505",
+  // iOS 26 "Liquid Glass" uses this color to tint Safari bars
+  themeColor: "#0a1929",
   width: "device-width",
   initialScale: 1,
-  viewportFit: "cover", // Extend into iOS safe areas
 };
 
 export default function RootLayout({
@@ -103,9 +105,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" style={{ backgroundColor: '#0a1929' }}>
       <body
         className={`${playfair.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        style={{ backgroundColor: '#0a1929' }}
       >
         {children}
       </body>
