@@ -27,7 +27,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    href: "mailto:hello@adeildovieira.com",
+    href: "mailto:me@adeildovieira.com",
     icon: Mail,
   },
 ];

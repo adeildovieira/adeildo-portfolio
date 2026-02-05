@@ -28,6 +28,7 @@ const geistMono = Geist_Mono({
  * Update these values with your actual information.
  */
 export const metadata: Metadata = {
+  metadataBase: new URL("https://adeildovieira.com"),
   title: {
     default: "Adeildo Vieira | Software Engineer",
     template: "%s | Adeildo Vieira",

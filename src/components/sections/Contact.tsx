@@ -61,7 +61,7 @@ export function Contact() {
     },
     {
       name: "Email",
-      href: "mailto:hello@adeildovieira.com",
+      href: "mailto:me@adeildovieira.com",
       icon: Mail,
     },
   ];
@@ -179,11 +179,11 @@ export function Contact() {
                   Quick Contact
                 </h3>
                 <a
-                  href="mailto:hello@adeildovieira.com"
+                  href="mailto:me@adeildovieira.com"
                   className="inline-flex items-center gap-2 text-opalite-400 transition-colors hover:text-opalite-300"
                 >
                   <Mail size={18} />
-                  hello@adeildovieira.com
+                  me@adeildovieira.com
                 </a>
               </div>
 

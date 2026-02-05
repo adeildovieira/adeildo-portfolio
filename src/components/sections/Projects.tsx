@@ -25,32 +25,18 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Project Alpha",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    tags: ["React", "TypeScript", "Node.js", "PostgreSQL"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
+    title: "RepSense",
+    description: "An AI-powered bench press assistant that provides real-time form feedback and rep counting. Combines embedded systems with cloud AI for an intelligent gym companion.",
+    tags: ["OpenAI API", "ESP32", "IoT", "Python", "Computer Vision"],
+    githubUrl: "https://github.com/adeildovieira/repsense",
+    featured: false,
   },
   {
-    title: "Project Beta",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    tags: ["Python", "FastAPI", "Docker", "AWS"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
-  },
-  {
-    title: "Project Gamma",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    tags: ["Next.js", "Tailwind CSS", "Prisma"],
-    githubUrl: "#",
-  },
-  {
-    title: "Project Delta",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-    tags: ["Java", "Spring Boot", "MongoDB"],
-    githubUrl: "#",
+    title: "Waste Classification CNN",
+    description: "A convolutional neural network that classifies waste into recyclable categories using image recognition. Trained on thousands of images to help automate waste sorting.",
+    tags: ["Python", "TensorFlow", "CNN", "Computer Vision", "Deep Learning"],
+    githubUrl: "https://github.com/adeildovieira/waste-classification",
+    featured: false,
   },
 ];
 
