@@ -89,7 +89,7 @@ export function Navigation() {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="text-xl font-semibold tracking-tight text-foreground transition-colors hover:text-opalite-400"
+              className="text-xl font-semibold tracking-tight text-foreground text-shadow transition-colors hover:text-opalite-400"
             >
               Adeildo<span className="text-opalite-500">.</span>
             </a>
@@ -101,7 +101,7 @@ export function Navigation() {
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="relative text-sm font-medium text-foreground-muted transition-colors hover:text-foreground group"
+                    className="relative text-sm font-medium text-foreground-muted text-shadow-sm transition-colors hover:text-foreground group"
                   >
                     {link.label}
                     <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-opalite-500 transition-all duration-300 group-hover:w-full" />

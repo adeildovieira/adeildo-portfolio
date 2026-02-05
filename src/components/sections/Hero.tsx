@@ -31,14 +31,14 @@ export function Hero() {
       <div className="mx-auto max-w-4xl text-center">
         {/* Greeting */}
         <FadeUp delay={0.2}>
-          <p className="mb-4 text-sm font-medium uppercase tracking-widest text-opalite-400">
+          <p className="mb-4 text-sm font-medium uppercase tracking-widest text-opalite-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             Software Engineer
           </p>
         </FadeUp>
 
         {/* Name - Using Playfair Display for elegant, expressive energy */}
         <FadeUp delay={0.3}>
-          <h1 className="mb-6 font-display text-5xl font-bold italic leading-tight tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="mb-6 font-display text-5xl font-bold leading-tight tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
             Adeildo
             <span className="text-opalite-500"> Vieira</span>
           </h1>
@@ -46,9 +46,10 @@ export function Hero() {
 
         {/* Tagline */}
         <FadeUp delay={0.4}>
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-foreground-muted md:text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Passionate 
-            about building elegant solutions and crafting experiences that matter.
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-foreground-muted drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] md:text-xl">
+            Computer Science at Duke '26. New Grad.
+            <br />
+            Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.
           </p>
         </FadeUp>
 
@@ -59,9 +60,9 @@ export function Hero() {
               href="#projects"
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+                document.querySelector("#experience")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-opalite-600 px-8 font-medium text-white transition-all hover:bg-opalite-500 hover:shadow-lg hover:shadow-opalite-600/25"
+              className="group inline-flex h-12 items-center justify-center gap-2 rounded-md bg-opalite-600 px-8 font-medium text-white text-shadow-sm transition-all hover:bg-opalite-500 hover:shadow-lg hover:shadow-opalite-600/25"
             >
               View My Work
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -72,7 +73,7 @@ export function Hero() {
                 e.preventDefault();
                 document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/10 px-8 font-medium text-foreground transition-all hover:border-opalite-500/50 hover:bg-white/5"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-white/10 px-8 font-medium text-foreground text-shadow-sm transition-all hover:border-opalite-500/50 hover:bg-white/5"
             >
               Get in Touch
             </a>

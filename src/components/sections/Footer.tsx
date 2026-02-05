@@ -39,7 +39,7 @@ export function Footer() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             {/* Copyright */}
-            <p className="text-sm text-foreground-muted">
+            <p className="text-sm text-foreground-muted text-shadow-sm">
               © {currentYear} Adeildo Vieira. All rights reserved.
             </p>
 
@@ -61,7 +61,7 @@ export function Footer() {
           </div>
 
           {/* Built With */}
-          <div className="mt-6 flex items-center justify-center gap-1 text-sm text-foreground-muted">
+          <div className="mt-6 flex items-center justify-center gap-1 text-sm text-foreground-muted text-shadow-sm">
             <span>Built with</span>
             <Heart size={14} className="text-opalite-500" fill="currentColor" />
             <span>using Next.js & Tailwind CSS</span>

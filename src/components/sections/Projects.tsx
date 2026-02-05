@@ -17,6 +17,7 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
+  emoji?: string;
   image?: string;
   liveUrl?: string;
   githubUrl?: string;
@@ -25,17 +26,19 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "RepSense",
-    description: "An AI-powered bench press assistant that provides real-time form feedback and rep counting. Combines embedded systems with cloud AI for an intelligent gym companion.",
-    tags: ["OpenAI API", "ESP32", "IoT", "Python", "Computer Vision"],
-    githubUrl: "https://github.com/adeildovieira/repsense",
+    title: "RepSense AI",
+    description: "Rep counters don't say much to users. So I built an ESP32 workout coach that calls the OpenAI API in real time, returning streams of bench press exercise sensor data for on-device feedback (rep count, imbalance, tempo, rest quality), emphasizing UX, reliability, and human-readable insights on the device display.",
+    tags: ["OpenAI API", "ESP32-BOX-3", "IMU Sensor", "IoT", "C"],
+    emoji: "🏋️",
+    githubUrl: "https://github.com/adeildovieira/RepSense-IoT-and-AI-Gym-Helper",
     featured: false,
   },
   {
-    title: "Waste Classification CNN",
-    description: "A convolutional neural network that classifies waste into recyclable categories using image recognition. Trained on thousands of images to help automate waste sorting.",
-    tags: ["Python", "TensorFlow", "CNN", "Computer Vision", "Deep Learning"],
-    githubUrl: "https://github.com/adeildovieira/waste-classification",
+    title: "MealPilot (Microsoft AI for Good Hackathon)",
+    description: "Built a Copilot Studio extension using Azure Maps Search/Routingto return geo-personalized healthy-meal options across NYC; pilot with 28 students achieved 80% task success in 45s vs 5 min (85% faster), targeting areas with >30% food insecurity.",
+    tags: ["Python", "MS Copilot Studio", "Azure Maps API"],
+    emoji: "🥗",
+    // githubUrl: "https://github.com/adeildovieira/waste-classification",
     featured: false,
   },
 ];
@@ -48,10 +51,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           project.featured ? "md:col-span-2" : ""
         }`}
       >
-        {/* Project Image Placeholder */}
+        {/* Project Image / Emoji */}
         <div className="aspect-video w-full bg-gradient-to-br from-background-tertiary to-background-secondary">
-          <div className="flex h-full items-center justify-center text-foreground-muted">
-            <span className="text-sm">Project Image</span>
+          <div className="flex h-full items-center justify-center">
+            {project.emoji ? (
+              <span className="text-7xl">{project.emoji}</span>
+            ) : (
+              <span className="text-sm text-foreground-muted">Project Image</span>
+            )}
           </div>
         </div>
 
@@ -59,16 +66,16 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div className="p-6">
           {/* Featured Badge */}
           {project.featured && (
-            <span className="mb-3 inline-block rounded-full bg-opalite-900/50 px-3 py-1 text-xs font-medium text-opalite-400">
+            <span className="mb-3 inline-block rounded-full bg-opalite-900/50 px-3 py-1 text-xs font-medium text-opalite-400 text-shadow-sm">
               Featured
             </span>
           )}
 
-          <h3 className="mb-2 text-xl font-semibold text-foreground group-hover:text-opalite-400 transition-colors">
+          <h3 className="mb-2 text-xl font-semibold text-foreground text-shadow group-hover:text-opalite-400 transition-colors">
             {project.title}
           </h3>
           
-          <p className="mb-4 text-foreground-muted leading-relaxed">
+          <p className="mb-4 text-foreground-muted text-shadow-sm leading-relaxed">
             {project.description}
           </p>
 
@@ -77,7 +84,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-background-tertiary px-3 py-1 text-xs font-medium text-foreground-muted"
+                className="rounded-full bg-background-tertiary px-3 py-1 text-xs font-medium text-foreground-muted text-shadow-sm"
               >
                 {tag}
               </span>
@@ -91,7 +98,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-opalite-400"
+                className="flex items-center gap-2 text-sm text-foreground-muted text-shadow-sm transition-colors hover:text-opalite-400"
               >
                 <Github size={16} />
                 Source
@@ -102,7 +109,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-opalite-400"
+                className="flex items-center gap-2 text-sm text-foreground-muted text-shadow-sm transition-colors hover:text-opalite-400"
               >
                 <ExternalLink size={16} />
                 Live Demo
@@ -129,19 +136,19 @@ export function Projects() {
       <div className="mx-auto max-w-6xl">
         {/* Section Header */}
         <FadeUp>
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400">
+          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400 text-shadow">
             Projects
           </p>
         </FadeUp>
         
         <FadeUp delay={0.1}>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground text-shadow sm:text-4xl md:text-5xl">
             Things I&apos;ve Built
           </h2>
         </FadeUp>
 
         <FadeUp delay={0.2}>
-          <p className="mb-12 max-w-2xl text-lg text-foreground-muted">
+          <p className="mb-12 max-w-2xl text-lg text-foreground-muted text-shadow-sm">
             A selection of projects that showcase my skills and passion for building 
             software. Each project represents challenges overcome and lessons learned.
           </p>
@@ -153,7 +160,7 @@ export function Projects() {
           staggerDelay={0.1}
         >
           {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </StaggerContainer>
 
@@ -164,7 +171,7 @@ export function Projects() {
               href="https://github.com/adeildovieira"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-opalite-400 transition-colors hover:text-opalite-300"
+              className="inline-flex items-center gap-2 text-opalite-400 text-shadow transition-colors hover:text-opalite-300"
             >
               View all projects on GitHub
               <ExternalLink size={16} />

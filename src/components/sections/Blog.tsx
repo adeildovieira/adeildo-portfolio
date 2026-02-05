@@ -57,23 +57,23 @@ function BlogCard({ post }: { post: BlogPost }) {
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-background-tertiary px-2 py-0.5 text-xs text-foreground-muted"
+              className="rounded-full bg-background-tertiary px-2 py-0.5 text-xs text-foreground-muted text-shadow-sm"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <h3 className="mb-3 text-xl font-semibold text-foreground transition-colors group-hover:text-opalite-400">
+        <h3 className="mb-3 text-xl font-semibold text-foreground text-shadow transition-colors group-hover:text-opalite-400">
           {post.title}
         </h3>
 
-        <p className="mb-4 text-foreground-muted leading-relaxed">
+        <p className="mb-4 text-foreground-muted text-shadow-sm leading-relaxed">
           {post.excerpt}
         </p>
 
         {/* Meta */}
-        <div className="flex items-center gap-4 text-sm text-foreground-muted">
+        <div className="flex items-center gap-4 text-sm text-foreground-muted text-shadow-sm">
           <span className="flex items-center gap-1">
             <Calendar size={14} />
             {post.date}
@@ -88,7 +88,7 @@ function BlogCard({ post }: { post: BlogPost }) {
         <div className="mt-4 pt-4 border-t border-white/5">
           <a
             href={`/blog/${post.slug}`}
-            className="inline-flex items-center gap-2 text-sm font-medium text-opalite-400 transition-colors hover:text-opalite-300"
+            className="inline-flex items-center gap-2 text-sm font-medium text-opalite-400 text-shadow transition-colors hover:text-opalite-300"
           >
             Read more
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -113,19 +113,19 @@ export function Blog() {
       <div className="mx-auto max-w-6xl">
         {/* Section Header */}
         <FadeUp>
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400">
+          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400 text-shadow">
             Blog
           </p>
         </FadeUp>
         
         <FadeUp delay={0.1}>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground text-shadow sm:text-4xl md:text-5xl">
             Thoughts & Writing
           </h2>
         </FadeUp>
 
         <FadeUp delay={0.2}>
-          <p className="mb-12 max-w-2xl text-lg text-foreground-muted">
+          <p className="mb-12 max-w-2xl text-lg text-foreground-muted text-shadow-sm">
             Sharing what I learn along the way. Technical insights, career reflections, 
             and things I find interesting.
           </p>
@@ -146,7 +146,7 @@ export function Blog() {
           <div className="mt-12 text-center">
             <a
               href="/blog"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 font-medium text-foreground transition-all hover:border-opalite-500/50 hover:bg-white/5"
+              className="group inline-flex items-center gap-2 rounded-md border border-white/10 px-6 py-3 font-medium text-foreground text-shadow transition-all hover:border-opalite-500/50 hover:bg-white/5"
             >
               View all posts
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

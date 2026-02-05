@@ -22,14 +22,14 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     type: "work",
-    title: "Software Engineering Intern — Full Stack",
-    organization: "BTG Pactual",
+    title: "Software Engineer Intern — Full Stack",
+    organization: "BTG Pactual Bank",
     location: "São Paulo, Brazil",
-    period: "Jun 2025 — Aug 2025",
+    period: "Jun—Aug 2025",
     description: [
-      "Developed full-stack features for internal trading and investment platforms.",
-      "Collaborated with cross-functional teams in an agile environment.",
-      "Contributed to scalable solutions serving thousands of users.",
+      "Shipped an authentication system flow using industry standard OAuth2/OIDC/PKCE (Subject under NDA).",
+      "Led end-to-end development of key features by aligning requirements with stakeholders and business.",
+      "Conducted unit and integration testing gated in CI/CD to ensure reliability and performance.",
     ],
     current: false,
   },
@@ -40,20 +40,20 @@ const experiences: ExperienceItem[] = [
     location: "Durham, NC",
     period: "May 2024 — Aug 2024",
     description: [
-      "Built full-stack applications as part of Duke's competitive summer program.",
-      "Worked on real-world projects with industry mentorship.",
-      "Enhanced skills in modern web development and software best practices.",
+      "Used 2M+ Wi-Fi and CO2 sensor data to predict room occupancy with R^2 = 0.72 and 95% accuracy (high/low/no occupation) by training and validating regression models.",
+      "Drove an Agile stakeholder loop to design HVAC scheduling best practices.",
+      "Optimized their work day by 2 hours by shipping a REST web service with PostgreSQL backend, providing a live occupancy dashboard in React.js.",
     ],
   },
   {
     type: "education",
-    title: "Bachelor of Science in Computer Science",
+    title: "B.Sc. in Computer Science",
     organization: "Duke University",
     location: "Durham, NC",
     period: "Aug 2022 — May 2026",
     description: [
-      "Relevant coursework: Data Structures, Algorithms, Machine Learning, Software Engineering.",
-      "Active member of tech communities on campus.",
+      "Relevant coursework: Data Structures, Design of Algorithms, AI, Machine Learning, NLP, Technical and Social Analysis of the Internet, Product Management.",
+      "Active member of tech communities Diversity++, SHPE, and ColorStack on campus. BRASA@Duke.",
     ],
     current: true,
   },
@@ -68,19 +68,19 @@ export function Experience() {
       <div className="mx-auto max-w-4xl">
         {/* Section Header */}
         <FadeUp>
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400">
+          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-opalite-400 text-shadow">
             Experience
           </p>
         </FadeUp>
         
         <FadeUp delay={0.1}>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground text-shadow sm:text-4xl md:text-5xl">
             Where I&apos;ve Been
           </h2>
         </FadeUp>
 
         <FadeUp delay={0.2}>
-          <p className="mb-12 max-w-2xl text-lg text-foreground-muted">
+          <p className="mb-12 max-w-2xl text-lg text-foreground-muted text-shadow-sm">
             My journey through education and professional experiences that shaped 
             who I am as a software engineer.
           </p>
@@ -131,20 +131,20 @@ export function Experience() {
                       {item.type === "work" ? "Work" : "Education"}
                     </span>
 
-                    <h3 className="text-xl font-semibold text-foreground">
+                    <h3 className="text-xl font-semibold text-foreground text-shadow">
                       {item.title}
                     </h3>
                     
-                    <p className="mt-1 font-medium text-opalite-400">
+                    <p className="mt-1 font-medium text-opalite-400 text-shadow">
                       {item.organization}
                     </p>
                     
-                    <p className="mt-1 text-sm text-foreground-muted">
+                    <p className="mt-1 text-sm text-foreground-muted text-shadow-sm">
                       {item.location} • {item.period}
                     </p>
 
                     <ul
-                      className={`mt-4 space-y-2 text-foreground-muted ${
+                      className={`mt-4 space-y-2 text-foreground-muted text-shadow-sm ${
                         index % 2 === 0 ? "md:ml-auto" : ""
                       }`}
                     >
