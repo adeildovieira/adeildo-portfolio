@@ -49,6 +49,7 @@
   --color-opalite-900: var(--opalite-900);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-playfair);
 }
 
 /* Dark mode is the default - no media query needed */

@@ -1,112 +1,93 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * FilmGrain Component
  * 
- * Creates a cinematic film grain overlay effect with:
- * - Animated noise/grain texture
- * - Subtle gate weave (vertical jitter simulating old film projectors)
- * - Grainy gradient background blend
+ * Creates that signature grainy, moving background effect like afamolie.com.
+ * Uses an animated GIF for the grain texture — simple, performant, authentic.
  * 
- * This component renders a full-screen fixed overlay that sits on top
- * of all content, creating that nostalgic, cinematic atmosphere.
+ * Features:
+ * - Animated grain in hero section (moving GIF)
+ * - Static grain below hero (frozen frame for readability)
+ * - Smooth transition between animated ↔ static on scroll
+ * - Resumes animation when scrolling back to top
  */
-export function FilmGrain() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
 
+export function HeroGrain() {
+  const [isAnimated, setIsAnimated] = useState(true);
+
+  // Switch between animated and static grain based on scroll position
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationId: number;
-    let gateWeaveOffset = 0;
-
-    // Resize canvas to fill viewport
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const heroHeight = window.innerHeight;
+      // Switch to static when scrolled past 50% of hero height
+      const shouldAnimate = scrollY < heroHeight * 0.5;
+      setIsAnimated(shouldAnimate);
     };
 
-    resize();
-    window.addEventListener("resize", resize);
-
-    // Generate film grain noise
-    const generateNoise = () => {
-      const imageData = ctx.createImageData(canvas.width, canvas.height);
-      const data = imageData.data;
-
-      // Gate weave effect - subtle vertical oscillation
-      gateWeaveOffset = Math.sin(Date.now() * 0.001) * 0.5;
-
-      for (let i = 0; i < data.length; i += 4) {
-        // Random grain value with low intensity for subtlety
-        const grain = Math.random() * 25;
-        
-        data[i] = grain;     // R
-        data[i + 1] = grain; // G
-        data[i + 2] = grain; // B
-        data[i + 3] = 12;    // A - very low opacity for subtle grain
-      }
-
-      ctx.putImageData(imageData, 0, gateWeaveOffset);
-    };
-
-    // Animation loop at reduced framerate for performance
-    let lastTime = 0;
-    const fps = 24; // Cinematic framerate
-    const frameInterval = 1000 / fps;
-
-    const animate = (currentTime: number) => {
-      animationId = requestAnimationFrame(animate);
-
-      const delta = currentTime - lastTime;
-      if (delta < frameInterval) return;
-
-      lastTime = currentTime - (delta % frameInterval);
-      generateNoise();
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    return () => {
-      window.removeEventListener("resize", resize);
-      cancelAnimationFrame(animationId);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {/* Film grain canvas overlay */}
-      <canvas
-        ref={canvasRef}
-        className="pointer-events-none fixed inset-0 z-50 opacity-40 mix-blend-overlay"
+      {/* Animated grain (visible in hero) */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
+        style={{
+          opacity: isAnimated ? 1 : 0,
+          backgroundImage: "url('/grain.gif')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
         aria-hidden="true"
       />
-      
+      {/* Static grain (visible below hero) */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
+        style={{
+          opacity: isAnimated ? 0 : 1,
+          backgroundImage: "url('/grain-static.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        aria-hidden="true"
+      />
+    </>
+  );
+}
+
+/**
+ * BackgroundGradient Component
+ * 
+ * Static gradient background with opalite blue tones.
+ * Always visible throughout the page.
+ */
+export function BackgroundGradient() {
+  return (
+    <>
       {/* Grainy gradient background - opalite blue tones */}
       <div
-        className="pointer-events-none fixed inset-0 z-0"
+        className="pointer-events-none fixed inset-0 z-[1]"
         style={{
           background: `
             radial-gradient(
               ellipse 80% 50% at 50% 0%,
-              rgba(59, 154, 224, 0.15) 0%,
-              rgba(10, 35, 64, 0.1) 40%,
+              rgba(59, 154, 224, 0.12) 0%,
+              rgba(10, 35, 64, 0.08) 40%,
               transparent 70%
             ),
             radial-gradient(
               ellipse 60% 40% at 100% 100%,
-              rgba(31, 90, 144, 0.1) 0%,
+              rgba(31, 90, 144, 0.08) 0%,
               transparent 50%
             ),
             radial-gradient(
               ellipse 40% 30% at 0% 80%,
-              rgba(47, 122, 184, 0.08) 0%,
+              rgba(47, 122, 184, 0.06) 0%,
               transparent 50%
             )
           `,
@@ -114,20 +95,35 @@ export function FilmGrain() {
         aria-hidden="true"
       />
 
-      {/* Vignette effect for that cinematic edge darkening */}
+      {/* Vignette effect for cinematic edge darkening */}
       <div
-        className="pointer-events-none fixed inset-0 z-40"
+        className="pointer-events-none fixed inset-0 z-[2]"
         style={{
           background: `
             radial-gradient(
               ellipse 70% 70% at 50% 50%,
               transparent 0%,
-              rgba(0, 0, 0, 0.4) 100%
+              rgba(0, 0, 0, 0.3) 100%
             )
           `,
         }}
         aria-hidden="true"
       />
+    </>
+  );
+}
+
+/**
+ * FilmGrain Component
+ * 
+ * Combines HeroGrain (animated GIF, fades on scroll) and BackgroundGradient (static).
+ * The grain is visible in the hero section then fades away for readability.
+ */
+export function FilmGrain() {
+  return (
+    <>
+      <HeroGrain />
+      <BackgroundGradient />
     </>
   );
 }

@@ -1,5 +1,9 @@
 # Adeildo Vieira — Personal Portfolio
 
+Ade's Portfolio - v0.1.2 - 02/02/2025
+Hey! This is my portfolio carefully made to portray my skills and personality!
+I am giving this portfolio to myself as a birthday gift (It's February 20, btw :)
+
 > A modern, cinematic portfolio website built to catch the attention of recruiters and showcase my journey as a Software Engineer.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
@@ -115,9 +119,3 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 **Built with care by [Adeildo Vieira](https://adeildovieira.com)** 💙
-
-# Readme for my website:
-
-Ade's Portfolio - v0.1.1 - 02/02/2025
-Hey! This is my portfolio carefully made to portray my skills and personality!
-I am giving this portfolio to myself as a birthday gift (It's February 20, btw :)

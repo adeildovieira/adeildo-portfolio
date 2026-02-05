@@ -26,7 +26,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center px-6"
+      className="relative z-20 flex min-h-screen items-center justify-center px-6"
     >
       <div className="mx-auto max-w-4xl text-center">
         {/* Greeting */}
@@ -36,9 +36,9 @@ export function Hero() {
           </p>
         </FadeUp>
 
-        {/* Name */}
+        {/* Name - Using Playfair Display for elegant, expressive energy */}
         <FadeUp delay={0.3}>
-          <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="mb-6 font-display text-5xl font-bold italic leading-tight tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
             Adeildo
             <span className="text-opalite-500"> Vieira</span>
           </h1>

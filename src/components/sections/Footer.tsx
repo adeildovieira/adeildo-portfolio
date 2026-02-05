@@ -34,7 +34,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/5 py-12 px-6">
+    <footer className="relative z-10 border-t border-white/5 py-12 px-6">
       <FadeIn>
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">

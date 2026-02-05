@@ -1,14 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 /**
  * Font Configuration
  * 
- * Using Geist font family for a modern, clean aesthetic.
- * - Geist Sans: Primary text
+ * Typography that reflects personality:
+ * - Playfair Display: Elegant serif for headlines — expressive, artistic energy
+ * - Geist Sans: Clean modern sans-serif for body text
  * - Geist Mono: Code blocks and technical elements
  */
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -91,7 +98,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${playfair.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         {children}
       </body>

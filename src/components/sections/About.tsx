@@ -20,7 +20,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative py-24 px-6 md:py-32"
+      className="relative z-10 py-24 px-6 md:py-32"
     >
       <div className="mx-auto max-w-6xl">
         {/* Section Header */}
