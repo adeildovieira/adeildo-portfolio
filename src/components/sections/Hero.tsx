@@ -62,7 +62,7 @@ export function Hero() {
                 e.preventDefault();
                 document.querySelector("#experience")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="group inline-flex h-12 items-center justify-center gap-2 rounded-md bg-opalite-600 px-8 font-medium text-white text-shadow-sm transition-all hover:bg-opalite-500 hover:shadow-lg hover:shadow-opalite-600/25"
+              className="group inline-flex h-12 items-center justify-center gap-2 rounded-md px-8 font-medium text-white text-shadow-sm glass-btn-primary"
             >
               View My Work
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -71,7 +71,7 @@ export function Hero() {
               href="/Adeildo_Vieira_Silva_Neto_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex h-12 items-center justify-center gap-2 rounded-md border border-opalite-500/40 px-8 font-medium text-foreground text-shadow-sm transition-all hover:border-opalite-500 hover:bg-opalite-500/10"
+              className="group inline-flex h-12 items-center justify-center gap-2 rounded-md px-8 font-medium text-foreground text-shadow-sm glass-btn-outline"
             >
               <FileText size={18} />
               Resume
@@ -82,7 +82,7 @@ export function Hero() {
                 e.preventDefault();
                 document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-white/10 px-8 font-medium text-foreground text-shadow-sm transition-all hover:border-opalite-500/50 hover:bg-white/5"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-md px-8 font-medium text-foreground text-shadow-sm glass-btn-outline"
             >
               Get in Touch
             </a>
