@@ -156,7 +156,7 @@ export function Blog() {
           <div className="mt-12 text-center">
             <a
               href="/blog"
-              className="group inline-flex items-center gap-2 rounded-md border border-white/10 px-6 py-3 font-medium text-foreground text-shadow transition-all hover:border-opalite-500/50 hover:bg-white/5"
+              className="group inline-flex items-center gap-2 rounded-md px-6 py-3 font-medium text-foreground text-shadow glass-btn-outline"
             >
               View all posts
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

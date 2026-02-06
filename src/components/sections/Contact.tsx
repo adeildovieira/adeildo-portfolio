@@ -93,7 +93,7 @@ export function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 w-12 items-center justify-center rounded-md border border-white/10 text-foreground-muted transition-all hover:border-opalite-500/50 hover:bg-white/5 hover:text-opalite-400"
+                  className="flex h-12 w-12 items-center justify-center rounded-md text-foreground-muted glass-btn-icon hover:text-opalite-400"
                   aria-label={link.name}
                 >
                   <link.icon size={20} />

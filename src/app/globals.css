@@ -120,6 +120,91 @@ html {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
 
+/* ============================================
+   Glassmorphism Button Styles
+   Reusable glass effect for all interactive elements
+   ============================================ */
+
+/* Primary glass button — filled with opalite tint */
+.glass-btn-primary {
+  background: rgba(45, 122, 184, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 154, 224, 0.3);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-btn-primary:hover {
+  background: rgba(45, 122, 184, 0.35);
+  border-color: rgba(59, 154, 224, 0.5);
+  box-shadow:
+    0 8px 32px rgba(59, 154, 224, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Secondary / outline glass button */
+.glass-btn-outline {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.glass-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(59, 154, 224, 0.4);
+  box-shadow:
+    0 8px 32px rgba(59, 154, 224, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Floating glass button (e.g. Back to Top) */
+.glass-btn-float {
+  background: rgba(45, 122, 184, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(59, 154, 224, 0.25);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-btn-float:hover {
+  background: rgba(45, 122, 184, 0.35);
+  border-color: rgba(59, 154, 224, 0.5);
+  box-shadow:
+    0 12px 40px rgba(59, 154, 224, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Glass icon button (e.g. social icons, nav hamburger) */
+.glass-btn-icon {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(59, 154, 224, 0.4);
+  box-shadow:
+    0 4px 16px rgba(59, 154, 224, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
 /* Fade in animation for carousel */
 @keyframes fade-in {
   0% {
