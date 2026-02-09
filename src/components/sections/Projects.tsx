@@ -57,6 +57,15 @@ const projects: Project[] = [
     githubUrl: "https://github.com/adeildovieira/StarWars-To-Do-App-Flutter",
     featured: false,
   },
+  {
+    title: "This Portfolio",
+    description: "The site you're on right now! A cinematic, dark-themed portfolio with film grain overlays, Apple-style scroll animations, and glassmorphism UI. Version-controlled with a main/prod branch strategy and semantic versioning (v0.4.x), deployed via CI/CD to Cloudflare Pages.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Cloudflare Pages"],
+    emoji: "💙",
+    liveUrl: "https://adeildovieira.com",
+    githubUrl: "https://github.com/adeildovieira/adeildo-portfolio",
+    featured: true,
+  },
 ];
 
 function ProjectCard({ project }: { project: Project }) {

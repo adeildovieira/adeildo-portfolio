@@ -102,7 +102,7 @@ export function About() {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-opalite-500" />
-                    Looking for my next challenge in full-stack dev and DevOps.
+                    Looking forward to my next challenge in full-stack or backend development.
                   </li>
                 </ul>
               </div>
