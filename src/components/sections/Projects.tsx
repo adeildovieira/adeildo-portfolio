@@ -147,9 +147,12 @@ export function Projects() {
 
   // Calculate the offset for the carousel
   const getTransformOffset = () => {
-    // Mobile: 100% per card, Desktop: 51% per card (2 visible)
-    const offset = isMobile ? 100 : 51;
-    return `translateX(-${currentIndex * offset}%)`;
+    if (isMobile) {
+      // Mobile: 1 card visible. Each slide = 100% + gap (16px)
+      return `calc(-${currentIndex * 100}% - ${currentIndex * 16}px)`;
+    }
+    // Desktop: 2 cards visible. Each slide = 50% + half gap (12px)
+    return `calc(-${currentIndex * 50}% - ${currentIndex * 12}px)`;
   };
 
   const nextProject = () => {
@@ -208,19 +211,18 @@ export function Projects() {
 
       {/* Projects Carousel */}
       <div className="mx-auto max-w-6xl relative">
-        {/* Left Arrow */}
+        {/* Desktop Arrows (outside cards) */}
         <button
           onClick={prevProject}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 p-2 text-foreground-muted hover:text-opalite-400 transition-colors"
+          className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 p-2 text-foreground-muted hover:text-opalite-400 transition-colors"
           aria-label="Previous project"
         >
           <ChevronLeft size={40} strokeWidth={1.5} />
         </button>
 
-        {/* Right Arrow */}
         <button
           onClick={nextProject}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 p-2 text-foreground-muted hover:text-opalite-400 transition-colors"
+          className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 p-2 text-foreground-muted hover:text-opalite-400 transition-colors"
           aria-label="Next project"
         >
           <ChevronRight size={40} strokeWidth={1.5} />
@@ -228,7 +230,7 @@ export function Projects() {
 
         {/* Carousel Container */}
         <FadeUp delay={0.3}>
-          <div className="overflow-hidden px-2 md:px-0">
+          <div className="overflow-hidden">
             <div 
               ref={containerRef}
               className="flex gap-4 md:gap-6 transition-transform duration-500 ease-in-out"
@@ -246,20 +248,41 @@ export function Projects() {
           </div>
         </FadeUp>
 
-        {/* Page Indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                index === currentIndex % projects.length || index === (currentIndex + 1) % projects.length
-                  ? "bg-opalite-400"
-                  : "bg-white/20 hover:bg-white/40"
-              }`}
-              aria-label={`Go to project ${index + 1}`}
-            />
-          ))}
+        {/* Mobile Arrows + Page Indicators */}
+        <div className="flex items-center justify-center gap-6 mt-8">
+          {/* Mobile Left Arrow */}
+          <button
+            onClick={prevProject}
+            className="md:hidden p-2 text-foreground-muted hover:text-opalite-400 transition-colors"
+            aria-label="Previous project"
+          >
+            <ChevronLeft size={28} strokeWidth={1.5} />
+          </button>
+
+          {/* Dots */}
+          <div className="flex items-center gap-2">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentIndex % projects.length
+                    ? "bg-opalite-400"
+                    : "bg-white/20 hover:bg-white/40"
+                }`}
+                aria-label={`Go to project ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Mobile Right Arrow */}
+          <button
+            onClick={nextProject}
+            className="md:hidden p-2 text-foreground-muted hover:text-opalite-400 transition-colors"
+            aria-label="Next project"
+          >
+            <ChevronRight size={28} strokeWidth={1.5} />
+          </button>
         </div>
 
         {/* View All Link */}
