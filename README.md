@@ -1,6 +1,6 @@
 # Adeildo Vieira — Personal Portfolio
 
-Ade's Portfolio - v0.4.1 - 02/09/2025
+Ade's Portfolio - v0.4.2 - 02/09/2025
 
 Hey! This is my portfolio carefully made to portray my skills and personality!
 I am giving this portfolio to myself as a birthday gift (It's February 20, btw :)
