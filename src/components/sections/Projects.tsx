@@ -136,6 +136,8 @@ export function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   // Check if mobile on mount and resize
   useEffect(() => {
@@ -145,14 +147,31 @@ export function Projects() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Touch / swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const delta = touchStartX.current - touchEndX.current;
+    const threshold = 50; // minimum px to count as a swipe
+    if (delta > threshold) nextProject();
+    else if (delta < -threshold) prevProject();
+  };
+
   // Calculate the offset for the carousel
   const getTransformOffset = () => {
     if (isMobile) {
       // Mobile: 1 card visible. Each slide = 100% + gap (16px)
-      return `calc(-${currentIndex * 100}% - ${currentIndex * 16}px)`;
+      return `translateX(calc(-${currentIndex * 100}% - ${currentIndex * 16}px))`;
     }
     // Desktop: 2 cards visible. Each slide = 50% + half gap (12px)
-    return `calc(-${currentIndex * 50}% - ${currentIndex * 12}px)`;
+    return `translateX(calc(-${currentIndex * 50}% - ${currentIndex * 12}px))`;
   };
 
   const nextProject = () => {
@@ -230,7 +249,12 @@ export function Projects() {
 
         {/* Carousel Container */}
         <FadeUp delay={0.3}>
-          <div className="overflow-hidden">
+          <div
+            className="overflow-hidden touch-pan-y"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div 
               ref={containerRef}
               className="flex gap-4 md:gap-6 transition-transform duration-500 ease-in-out"
