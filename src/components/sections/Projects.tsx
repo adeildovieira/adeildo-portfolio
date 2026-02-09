@@ -20,7 +20,6 @@ interface Project {
   tags: string[];
   emoji?: string;
   image?: string;
-  liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
 }
@@ -56,6 +55,14 @@ const projects: Project[] = [
     emoji: "⚔️",
     githubUrl: "https://github.com/adeildovieira/StarWars-To-Do-App-Flutter",
     featured: false,
+  },
+  {
+    title: "This Portfolio",
+    description: "The site you're on right now! A portfolio I made with things I love in the sites I visit on the internet, such as the grain background, animations, and glassmorphism UI. Version-controlled with a main/prod branch strategy and semantic versioning (v0.x.x), deployed via CI/CD to Cloudflare Pages.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "CI/CD", "Cloudflare Pages"],
+    emoji: "💙",
+    githubUrl: "https://github.com/adeildovieira/adeildo-portfolio",
+    featured: true,
   },
 ];
 
@@ -108,17 +115,6 @@ function ProjectCard({ project }: { project: Project }) {
             >
               <Github size={16} />
               Source
-            </a>
-          )}
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-foreground-muted text-shadow-sm transition-colors hover:text-opalite-400"
-            >
-              <ExternalLink size={16} />
-              Live Demo
             </a>
           )}
         </div>
