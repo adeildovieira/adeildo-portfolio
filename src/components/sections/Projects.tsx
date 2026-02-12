@@ -59,7 +59,7 @@ const projects: Project[] = [
   {
     title: "This Portfolio",
     description: "The site you're on right now! A portfolio I made with things I love in the sites I visit on the internet, such as the grain background, animations, and glassmorphism UI. Version-controlled with a main/prod branch strategy and semantic versioning (v0.x.x), deployed via CI/CD to Cloudflare Pages.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "CI/CD", "Cloudflare Pages"],
+    tags: ["CI/CD", "Cloudflare Pages", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     emoji: "💙",
     githubUrl: "https://github.com/adeildovieira/adeildo-portfolio",
     featured: true,
