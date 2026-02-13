@@ -29,6 +29,9 @@ export function Hero() {
       className="relative z-20 flex min-h-screen items-center justify-center px-6"
     >
       <div className="mx-auto max-w-4xl text-center">
+        {/* Full legal name — hidden visually, visible to search engines */}
+        <h2 className="sr-only">Adeildo Vieira Silva Neto — Software Engineer Portfolio</h2>
+
         {/* Greeting */}
         <FadeUp delay={0.2}>
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-opalite-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">

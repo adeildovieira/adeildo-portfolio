@@ -42,7 +42,7 @@ const experiences: ExperienceItem[] = [
     description: [
       "Used 2M+ Wi-Fi logs and CO2 sensor data to predict room occupancy with R^2 = 0.72 and 95% accuracy (high/low/no occupation) by training and validating regression models.",
       "Drove an Agile stakeholder loop to design HVAC scheduling best practices.",
-      "Optimized their work day by 2 hours by shipping a REST web service with PostgreSQL backend, providing a live occupancy dashboard in React.js.",
+      "Optimized their work day by 2 hours by shipping a REST web service with PostgreSQL backend and CI/CD, providing a live occupancy dashboard in React.js.",
     ],
   },
   {

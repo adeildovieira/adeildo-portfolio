@@ -43,6 +43,8 @@ export const metadata: Metadata = {
   description:
     "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
   keywords: [
+    "Adeildo Vieira Silva Neto",
+    "Adeildo Vieira",
     "Software Engineer",
     "Full Stack Developer",
     "React",
@@ -53,8 +55,8 @@ export const metadata: Metadata = {
     "Duke University",
     "BTG Pactual",
   ],
-  authors: [{ name: "Adeildo Vieira" }],
-  creator: "Adeildo Vieira",
+  authors: [{ name: "Adeildo Vieira Silva Neto" }],
+  creator: "Adeildo Vieira Silva Neto",
   openGraph: {
     type: "website",
     locale: "en_US",
