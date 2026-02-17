@@ -25,7 +25,7 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     title: "How it was like to intern at BTG Pactual Bank",
-    excerpt: "Pactual. BTG. Better Than Goldman. You name it. The people I worked gave all the names possible to BTG - they were fun, smart, and always ready to help. That made all the difference!",
+    excerpt: "Pactual. BTG. Better Than G... You name it. The people I worked gave all the names possible to BTG - they were fun, smart, and always ready to help. That made all the difference!",
     date: "Feb 21, 2026",
     readTime: "i min read",
     slug: "building-modern-web-apps",
@@ -36,7 +36,7 @@ const blogPosts: BlogPost[] = [
     title: "Lessons from My First Internship, the Code+ Program at Duke",
     excerpt: "Campus Space and Management! That was the name of our super-very-nice-to-work-with group! Really. I could learn more than I expected from our coexistence that summer.",
     date: "Feb 16, 2026",
-    readTime: "6 min read",
+    readTime: "5 min read",
     slug: "lessons-first-internship",
     tags: ["Career", "Learning", "Teamwork"],
     comingSoon: false,

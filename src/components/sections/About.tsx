@@ -87,18 +87,18 @@ export function About() {
 
             {/* Quick Info Card */}
             <FadeUp delay={0.6}>
-              <div className="mt-10 rounded-2xl border border-white/5 bg-background-secondary p-6">
+              <div className="mt-10 rounded-2xl p-6 glass-card">
                 <h3 className="mb-4 text-sm font-medium uppercase tracking-widest text-opalite-400 text-shadow">
                   Quick Facts
                 </h3>
                 <ul className="space-y-3 text-foreground-muted text-shadow-sm">
                   <li className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-opalite-500" />
-                    Based in Durham, North Carolina, USA.
+                    Intern experience with Agile and cross-functional teams; SDE lifecycle, Python, TypeScript, Node.js, PostgreSQL, and more.
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-opalite-500" />
-                    First-gen student at Duke University, Class of 2026.
+                    First-gen student at Duke University, Class of 2026, graduating May 2026.
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-opalite-500" />

@@ -66,7 +66,7 @@ export function Footer() {
             <Heart size={14} className="text-opalite-500" fill="currentColor" />
             <span>using Next.js & Tailwind CSS</span>
             <span className="mx-1">·</span>
-            <span>v0.5.0</span>
+            <span>v0.5.1</span>
           </div>
         </div>
       </FadeIn>
