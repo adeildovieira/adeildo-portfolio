@@ -33,11 +33,11 @@ const blogPosts: BlogPost[] = [
   {
     title: "Lessons from My First Internship, the Code+ Program at Duke",
     excerpt: "Campus Space and Management! That was the name of our super-very-nice-to-work-with group! Really. I could learn more than I expected from our coexistence that summer.",
-    date: "Feb 10, 2025",
-    readTime: "j min read",
+    date: "Feb 16, 2026",
+    readTime: "5 min read",
     slug: "lessons-first-internship",
-    tags: ["Career", "Learning"],
-    comingSoon: true,
+    tags: ["Career", "Learning", "Teamwork"],
+    comingSoon: false,
   },
   {
     title: "My last last name is grandson. In portuguese.",
