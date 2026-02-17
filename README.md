@@ -1,17 +1,17 @@
 # Adeildo Vieira — Personal Portfolio
 
-Ade's Portfolio - v0.5.0 - 02/16/2025
+Ade's Portfolio - v0.5.1 - 02/16/2026
 
-Hey! This is my portfolio carefully made to portray my skills and personality!
-I am giving this portfolio to myself as a birthday gift (It's February 20, btw :)
+> Hey! This is my portfolio carefully made to portray my skills and personality!
+> I am giving this portfolio to myself as a birthday gift (It's February 20, btw :)
 
-> A modern, cinematic portfolio website built to catch the attention of recruiters and showcase my journey as a Software Engineer.
+> A modern, cinematic portfolio website built to showcase my journey as a Software Engineer.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38bdf8?style=flat-square&logo=tailwindcss)
 
-## ✨ What Makes This Special
+## What Makes This Special:
 
 I wanted something that reflects **who I am** — creative, detail-oriented, and unafraid to push boundaries. Here's what sets it apart:
 

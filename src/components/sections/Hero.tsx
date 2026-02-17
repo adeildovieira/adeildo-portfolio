@@ -67,7 +67,7 @@ export function Hero() {
               }}
               className="group inline-flex h-12 items-center justify-center gap-2 rounded-md px-8 font-medium text-white text-shadow-sm glass-btn-primary"
             >
-              View My Work
+              View my work
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
@@ -87,7 +87,7 @@ export function Hero() {
               }}
               className="inline-flex h-12 items-center justify-center gap-2 rounded-md px-8 font-medium text-foreground text-shadow-sm glass-btn-outline"
             >
-              Get in Touch
+              Get in touch
             </a>
           </div>
         </FadeUp>

@@ -205,6 +205,17 @@ html {
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
+/* Glass card — for content containers like Quick Facts */
+.glass-card {
+  background: rgba(20, 40, 65, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
 /* Fade in animation for carousel */
 @keyframes fade-in {
   0% {
