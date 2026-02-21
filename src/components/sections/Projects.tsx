@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { FadeUp } from "@/components/ui/Animations";
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, Github, ChevronLeft, ChevronRight, FileText } from "lucide-react";
 
 /**
  * Projects Section
@@ -21,6 +21,7 @@ interface Project {
   emoji?: string;
   image?: string;
   githubUrl?: string;
+  reportUrl?: string;
   featured?: boolean;
 }
 
@@ -38,6 +39,14 @@ const projects: Project[] = [
     description: "Built a Copilot Studio extension using Azure Maps Search/Routing to return geo-personalized healthy-meal options across NYC; pilot with 28 students achieved 80% task success in 45s vs 5 min (85% faster), targeting areas with >30% food insecurity.",
     tags: ["Python", "MS Copilot Studio", "Azure Maps API"],
     emoji: "🥗",
+    featured: false,
+  },
+  {
+    title: "Mini Amazon - Database Systems",
+    description: "Full-stack e-commerce platform built for Database Systems. I owned the seller side: inventory CRUD, order fulfillment flow, and stock management; plus the UI/UX design across the app. Five-person team, Flask backend, PostgreSQL with complex queries, and a storefront that handled search, carts, and checkout end to end.",
+    tags: ["Python", "Flask", "PostgreSQL", "HTML/CSS", "SQL"],
+    emoji: "📦",
+    reportUrl: "/Mini_Amazon_Report.pdf",
     featured: false,
   },
   {
@@ -115,6 +124,17 @@ function ProjectCard({ project }: { project: Project }) {
             >
               <Github size={16} />
               Source
+            </a>
+          )}
+          {project.reportUrl && (
+            <a
+              href={project.reportUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-foreground-muted text-shadow-sm transition-colors hover:text-opalite-400"
+            >
+              <FileText size={16} />
+              Report
             </a>
           )}
         </div>
