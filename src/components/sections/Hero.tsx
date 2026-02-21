@@ -61,7 +61,7 @@ export function Hero() {
         {/* Tagline */}
         <FadeUp delay={0.4}>
           <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-foreground-muted drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] md:text-xl">
-            Computer Science at Duke '26. Full Merit/Need Scholarship.
+            Computer Science at Duke '26. Full Scholarship.
             <br />
             Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.
           </p>
