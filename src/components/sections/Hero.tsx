@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, FileText, Download } from "lucide-react";
 import { FadeUp } from "@/components/ui/Animations";
 
 /**
@@ -32,6 +32,17 @@ export function Hero() {
         {/* Full legal name — hidden visually, visible to search engines */}
         <h2 className="sr-only">Adeildo Vieira Silva Neto — Software Engineer Portfolio</h2>
 
+        {/* Open to Work */}
+        <FadeUp delay={0.15}>
+          <div className="mb-3 flex items-center justify-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            <span className="text-xs font-medium text-emerald-400 tracking-wide">Open to work</span>
+          </div>
+        </FadeUp>
+
         {/* Greeting */}
         <FadeUp delay={0.2}>
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-opalite-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
@@ -50,7 +61,7 @@ export function Hero() {
         {/* Tagline */}
         <FadeUp delay={0.4}>
           <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-foreground-muted drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] md:text-xl">
-            Computer Science at Duke '26. New Grad.
+            Computer Science at Duke '26. Full Merit/Need Scholarship.
             <br />
             Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.
           </p>
@@ -67,18 +78,30 @@ export function Hero() {
               }}
               className="group inline-flex h-12 items-center justify-center gap-2 rounded-md px-8 font-medium text-white text-shadow-sm glass-btn-primary"
             >
-              View my work
+              See my experience
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <a
-              href="/Adeildo_Vieira_Silva_Neto_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex h-12 items-center justify-center gap-2 rounded-md px-8 font-medium text-foreground text-shadow-sm glass-btn-outline"
-            >
-              <FileText size={18} />
-              Resume
-            </a>
+            <div className="inline-flex h-12 items-center rounded-md glass-btn-outline overflow-hidden">
+              <a
+                href="/Adeildo_Vieira_Silva_Neto_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-full items-center gap-2 px-6 font-medium text-foreground text-shadow-sm transition-colors hover:text-opalite-400"
+              >
+                <FileText size={18} />
+                Resume
+              </a>
+              <span className="h-6 w-px bg-white/15" />
+              <a
+                href="/Adeildo_Vieira_Silva_Neto_Resume.pdf"
+                download="Adeildo_Vieira_Resume.pdf"
+                className="inline-flex h-full items-center px-3 text-foreground text-shadow-sm transition-colors hover:text-opalite-400"
+                aria-label="Download Resume"
+                title="Download Resume"
+              >
+                <Download size={16} />
+              </a>
+            </div>
             <a
               href="#contact"
               onClick={(e) => {

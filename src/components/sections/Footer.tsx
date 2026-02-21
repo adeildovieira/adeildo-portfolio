@@ -3,15 +3,6 @@
 import { FadeIn } from "@/components/ui/Animations";
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
 
-/**
- * Footer Component
- * 
- * Simple footer with:
- * - Copyright notice
- * - Social links
- * - Built with credit
- */
-
 const currentYear = new Date().getFullYear();
 
 const socialLinks = [
@@ -66,7 +57,7 @@ export function Footer() {
             <Heart size={14} className="text-opalite-500" fill="currentColor" />
             <span>using Next.js & Tailwind CSS</span>
             <span className="mx-1">·</span>
-            <span>v0.5.1</span>
+            <span>v0.5.2</span>
           </div>
         </div>
       </FadeIn>
