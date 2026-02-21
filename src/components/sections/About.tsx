@@ -11,12 +11,6 @@ import { FadeUp } from "@/components/ui/Animations";
  * - Personal touch to connect with recruiters
  */
 export function About() {
-  const stats = [
-    { value: "5+", label: "Years Learning Tech" },
-    { value: "2+", label: "Tech Internships" },
-    { value: "10+", label: "Projects" },
-  ];
-
   return (
     <section
       id="about"
@@ -70,9 +64,25 @@ export function About() {
 
           {/* Stats */}
           <div className="flex flex-col justify-center">
-            <div className="grid grid-cols-3 gap-6">
-              {stats.map((stat, index) => (
-                <FadeUp key={stat.label} delay={0.3 + index * 0.1}>
+            {/* Hero stat */}
+            <FadeUp delay={0.3}>
+              <div className="text-center mb-8">
+                <p className="text-5xl font-bold text-opalite-400 text-shadow md:text-6xl">
+                  $434K
+                </p>
+                <p className="mt-2 text-sm text-foreground-muted text-shadow-sm">
+                  Scholarship &amp; Funds Awarded
+                </p>
+              </div>
+            </FadeUp>
+
+            {/* Secondary stats */}
+            <div className="flex justify-center gap-8">
+              {[
+                { value: "3", label: "Tech Internships" },
+                { value: "10+", label: "Projects" },
+              ].map((stat, index) => (
+                <FadeUp key={stat.label} delay={0.4 + index * 0.1}>
                   <div className="text-center">
                     <p className="text-4xl font-bold text-opalite-400 text-shadow md:text-5xl">
                       {stat.value}
@@ -94,7 +104,7 @@ export function About() {
                 <ul className="space-y-3 text-foreground-muted text-shadow-sm">
                   <li className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-opalite-500" />
-                    Intern experience with Agile and cross-functional teams; SDE lifecycle, Python, TypeScript, Node.js, PostgreSQL, and more.
+                    Intern experience with Agile and cross-functional teams; SDE lifecycle, Git, Python, TypeScript, Node.js, PostgreSQL, and more.
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-opalite-500" />
@@ -102,7 +112,7 @@ export function About() {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-opalite-500" />
-                    Looking forward to my next challenge in full-stack or backend development.
+                    Looking forward to my next challenge in full-stack, backend or AI/ML development.
                   </li>
                 </ul>
               </div>
