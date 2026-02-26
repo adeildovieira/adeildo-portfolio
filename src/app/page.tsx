@@ -1,4 +1,4 @@
-import { FilmGrain, Navigation, BackToTop } from "@/components/ui";
+import { FilmGrain, Navigation, SmoothScroll, CustomCursor } from "@/components/ui";
 import {
   Hero,
   About,
@@ -12,26 +12,25 @@ import {
 
 /**
  * Home Page
- * 
- * Main portfolio landing page featuring:
- * - Cinematic film grain overlay for atmosphere
- * - Scroll-triggered animations (Apple-style reveals)
- * - Strategic section order: Experience before Projects (internships are your strength!)
- * 
- * Each section is a self-contained component with its own animations.
- * The FilmGrain overlay creates the distinctive visual style.
+ *
+ * Portfolio as storytelling experience:
+ * - Smooth scroll (Lenis) for butter-smooth physics
+ * - Custom cursor for interactive delight
+ * - Scroll-linked animations throughout
+ * - Cinematic film grain overlay
+ * - Strategic section order: Experience before Projects
  */
 export default function Home() {
   return (
-    <>
+    <SmoothScroll>
+      {/* Custom Cursor */}
+      <CustomCursor />
+
       {/* Cinematic Film Grain Overlay */}
       <FilmGrain />
 
       {/* Navigation */}
       <Navigation />
-
-      {/* Back to Top Button (Mobile) */}
-      <BackToTop />
 
       {/* Main Content */}
       <main>
@@ -46,6 +45,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-    </>
+    </SmoothScroll>
   );
 }

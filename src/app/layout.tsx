@@ -109,7 +109,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" style={{ backgroundColor: '#0a1929' }}>
       <body
-        className={`${playfair.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${playfair.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground cursor-none`}
         style={{ backgroundColor: '#0a1929' }}
       >
         {children}

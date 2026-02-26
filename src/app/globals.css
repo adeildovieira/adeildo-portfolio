@@ -13,7 +13,7 @@
   --background-tertiary: #111111;
   --foreground: #f0f0f0;
   --foreground-muted: #a0a0a0;
-  
+
   /* Opalite Blue - iridescent, ethereal tones */
   --opalite-50: #e8f4fc;
   --opalite-100: #d1e9f9;
@@ -25,7 +25,7 @@
   --opalite-700: #1f5a90;
   --opalite-800: #113a68;
   --opalite-900: #0a2340;
-  
+
   /* Accent glow for hover states */
   --glow-color: rgba(59, 154, 224, 0.4);
   --glow-color-intense: rgba(59, 154, 224, 0.7);
@@ -52,6 +52,26 @@
   --font-display: var(--font-playfair);
 }
 
+/* ============================================
+   Lenis Smooth Scroll
+   ============================================ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 /* Dark mode is the default - no media query needed */
 body {
   background: var(--background);
@@ -67,12 +87,9 @@ body {
 
 /* Ensure background fills iOS safe areas */
 html {
-  scroll-behavior: smooth;
   background: var(--background);
-  /* Extend background into safe areas on iOS */
   min-height: 100%;
   min-height: -webkit-fill-available;
-  /* Fill the entire viewport including safe areas */
   background-color: var(--background);
 }
 
@@ -85,16 +102,16 @@ html {
 
 /* Custom scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background-secondary);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--opalite-700);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -105,6 +122,14 @@ html {
 ::selection {
   background: var(--opalite-600);
   color: var(--foreground);
+}
+
+/* Custom cursor — hide default on devices that support hover */
+@media (hover: hover) and (pointer: fine) {
+  .cursor-none,
+  .cursor-none * {
+    cursor: none !important;
+  }
 }
 
 /* Text shadow utility for better readability over grain */
@@ -165,26 +190,6 @@ html {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Floating glass button (e.g. Back to Top) */
-.glass-btn-float {
-  background: rgba(45, 122, 184, 0.2);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(59, 154, 224, 0.25);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.glass-btn-float:hover {
-  background: rgba(45, 122, 184, 0.35);
-  border-color: rgba(59, 154, 224, 0.5);
-  box-shadow:
-    0 12px 40px rgba(59, 154, 224, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
 /* Glass icon button (e.g. social icons, nav hamburger) */
 .glass-btn-icon {
   background: rgba(255, 255, 255, 0.04);
@@ -205,7 +210,7 @@ html {
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-/* Glass card — for content containers like Quick Facts */
+/* Glass card — for content containers */
 .glass-card {
   background: rgba(20, 40, 65, 0.6);
   backdrop-filter: blur(16px);
@@ -216,7 +221,64 @@ html {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Fade in animation for carousel */
+/* ============================================
+   Marquee / Scroll Animations
+   ============================================ */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-slow {
+  animation: marquee 60s linear infinite;
+}
+
+.animate-marquee-medium {
+  animation: marquee 45s linear infinite;
+}
+
+.animate-marquee-fast {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation-direction: reverse;
+}
+
+/* Pause marquee on hover */
+.marquee-row:hover .animate-marquee-slow,
+.marquee-row:hover .animate-marquee-medium,
+.marquee-row:hover .animate-marquee-fast {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   Link hover underline effect
+   ============================================ */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--opalite-400);
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Fade in animation for carousel (legacy — used by blog pages) */
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -232,7 +294,7 @@ html {
   animation: fade-in 0.4s ease-out forwards;
 }
 
-/* Infinite scroll animations for skills carousel */
+/* Legacy scroll animations (used by blog pages) */
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
