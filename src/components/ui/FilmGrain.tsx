@@ -1,72 +1,20 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
 /**
  * FilmGrain Component
- * 
- * Creates that signature grainy, moving background effect like afamolie.com.
- * Uses an animated GIF for the grain texture — simple, performant, authentic.
- * 
- * Features:
- * - Animated grain in hero section (moving GIF)
- * - Static grain below hero (frozen frame for readability)
- * - Smooth transition between animated ↔ static on scroll
- * - Resumes animation when scrolling back to top
+ *
+ * Cinematic grain + atmospheric gradients, the signature texture of the site.
+ *
+ * The grain is a single fixed overlay backed by an inline SVG fractal-noise
+ * texture (zero network cost — it replaces a 2.8MB animated GIF). The drift
+ * animation is pure GPU transform and is frozen automatically under
+ * `prefers-reduced-motion` via the global stylesheet.
+ *
+ * This is a server component — no client JS ships for the texture.
  */
-
-export function HeroGrain() {
-  const [isAnimated, setIsAnimated] = useState(true);
-
-  // Switch between animated and static grain based on scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const heroHeight = window.innerHeight;
-      // Switch to static when scrolled past 50% of hero height
-      const shouldAnimate = scrollY < heroHeight * 0.5;
-      setIsAnimated(shouldAnimate);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <>
-      {/* Animated grain (visible in hero) */}
-      <div
-        className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
-        style={{
-          opacity: isAnimated ? 1 : 0,
-          backgroundImage: "url('/grain.gif')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        aria-hidden="true"
-      />
-      {/* Static grain (visible below hero) */}
-      <div
-        className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
-        style={{
-          opacity: isAnimated ? 0 : 1,
-          backgroundImage: "url('/grain-static.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        aria-hidden="true"
-      />
-    </>
-  );
-}
 
 /**
- * BackgroundGradient Component
- * 
- * Static gradient background with opalite blue tones.
- * Always visible throughout the page.
+ * BackgroundGradient — static opalite radial wash + cinematic vignette.
  */
-export function BackgroundGradient() {
+function BackgroundGradient() {
   return (
     <>
       {/* Grainy gradient background - opalite blue tones */}
@@ -114,15 +62,12 @@ export function BackgroundGradient() {
 }
 
 /**
- * FilmGrain Component
- * 
- * Combines HeroGrain (animated GIF, fades on scroll) and BackgroundGradient (static).
- * The grain is visible in the hero section then fades away for readability.
+ * FilmGrain — drifting SVG grain overlay + atmospheric gradients.
  */
 export function FilmGrain() {
   return (
     <>
-      <HeroGrain />
+      <div className="film-grain" aria-hidden="true" />
       <BackgroundGradient />
     </>
   );

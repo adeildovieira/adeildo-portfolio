@@ -124,11 +124,32 @@ html {
   color: var(--foreground);
 }
 
-/* Custom cursor — hide default on devices that support hover */
-@media (hover: hover) and (pointer: fine) {
+/* Custom cursor — hide default on devices that support hover.
+   Skipped under reduced motion so the native cursor is never lost. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .cursor-none,
   .cursor-none * {
     cursor: none !important;
+  }
+}
+
+/* ============================================
+   Reduced motion — honor the user's OS setting.
+   Neutralizes CSS keyframe/transition motion; the JS-driven
+   Framer Motion + Lenis are gated in their components.
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .film-grain {
+    animation: none !important;
   }
 }
 
@@ -219,6 +240,37 @@ html {
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   Film Grain Overlay (zero-network SVG noise)
+   Replaces a 2.8MB animated GIF. GPU-only transform
+   animation; frozen under prefers-reduced-motion.
+   ============================================ */
+.film-grain {
+  position: fixed;
+  inset: -150%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='180'%20height='180'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.85'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  will-change: transform;
+  animation: grain-shift 8s steps(10) infinite;
+}
+
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-5%, -5%); }
+  20%  { transform: translate(-10%, 5%); }
+  30%  { transform: translate(5%, -10%); }
+  40%  { transform: translate(-5%, 12%); }
+  50%  { transform: translate(-12%, 5%); }
+  60%  { transform: translate(12%, 0); }
+  70%  { transform: translate(0, 10%); }
+  80%  { transform: translate(-12%, 0); }
+  90%  { transform: translate(8%, 5%); }
+  100% { transform: translate(0, 0); }
 }
 
 /* ============================================

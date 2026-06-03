@@ -86,14 +86,9 @@ export function Experience() {
         </FadeUp>
         
         <FadeUp delay={0.1}>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground text-shadow sm:text-4xl md:text-5xl">
+          <h2 className="mb-12 text-3xl font-bold tracking-tight text-foreground text-shadow sm:text-4xl md:text-5xl">
             Where I&apos;ve Been
           </h2>
-        </FadeUp>
-
-        <FadeUp delay={0.2}>
-          <p className="mb-12 text-lg text-foreground-muted text-shadow-sm">
-          </p>
         </FadeUp>
       </div>
 

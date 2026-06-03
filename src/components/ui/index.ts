@@ -15,12 +15,4 @@ export {
   StaggerContainer,
   StaggerItem
 } from "./Animations";
-export {
-  StickySection,
-  useStickyProgress,
-  TextReveal,
-  ParallaxLayer,
-  CountUp,
-  MagneticElement,
-  ScrollReveal,
-} from "./ScrollAnimations";
+export { MagneticElement } from "./ScrollAnimations";

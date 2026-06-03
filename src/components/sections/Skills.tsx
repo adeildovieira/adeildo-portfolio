@@ -62,12 +62,6 @@ const currentlyLearning = [
   { name: "Framer Motion", icon: "framer", color: "#0055FF" },
 ];
 
-// Custom icon URLs for icons not available on Simple Icons CDN
-const customIconUrls: Record<string, string> = {
-  aws: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
-  azure: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
-};
-
 function SkillIcon({ name, icon, color, customUrl, invert }: { name: string; icon: string; color: string; customUrl?: string; invert?: boolean }) {
   const iconSrc = customUrl || `https://cdn.simpleicons.org/${icon}/${color.replace('#', '')}`;
   
@@ -128,14 +122,9 @@ export function Skills() {
         </FadeUp>
         
         <FadeUp delay={0.1}>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground text-shadow sm:text-4xl md:text-5xl">
+          <h2 className="mb-12 text-3xl font-bold tracking-tight text-foreground text-shadow sm:text-4xl md:text-5xl">
             Tech Stack
           </h2>
-        </FadeUp>
-
-        <FadeUp delay={0.2}>
-          <p className="mb-12 text-lg text-foreground-muted text-shadow-sm">
-          </p>
         </FadeUp>
       </div>
 

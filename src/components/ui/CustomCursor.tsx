@@ -1,16 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 
 /**
  * CustomCursor
  *
  * A small circle cursor that follows the mouse with spring physics.
  * Grows on interactive elements (buttons, links, cards).
- * Hidden on touch devices.
+ * Hidden on touch devices and when the user prefers reduced motion
+ * (in which case the native cursor is restored via globals.css).
  */
 export function CustomCursor() {
+  const prefersReducedMotion = useReducedMotion();
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [hasCursor, setHasCursor] = useState(false);
@@ -58,7 +60,7 @@ export function CustomCursor() {
     };
   }, [cursorX, cursorY, isVisible]);
 
-  if (!hasCursor) return null;
+  if (!hasCursor || prefersReducedMotion) return null;
 
   return (
     <motion.div
