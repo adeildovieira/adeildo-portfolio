@@ -23,10 +23,10 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     title: "How it was like to intern at BTG Pactual Bank",
-    excerpt: "Pactual. BTG. Better Than Goldman. You name it. The people I worked gave all the names possible to BTG - they were fun, smart, and always ready to help. That made all the difference!",
-    date: "Feb 10, 2025",
-    readTime: "i min read",
-    slug: "building-modern-web-apps",
+    excerpt: "Pactual. BTG. Better Than Goldman. You name it. The people I worked with gave all the names possible to BTG - they were fun, smart, and always ready to help. That made all the difference!",
+    date: "Feb 21, 2026",
+    readTime: "1 min read",
+    slug: "interning-at-btg-pactual",
     tags: ["OAuth2", "UAT", "Prod"],
     comingSoon: true,
   },

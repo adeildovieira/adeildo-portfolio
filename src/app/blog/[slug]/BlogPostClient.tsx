@@ -13,7 +13,7 @@ interface BlogPostContent {
   content: React.ReactNode;
 }
 
-export function BlogPostClient({ post, slug }: { post: BlogPostContent | undefined; slug: string }) {
+export function BlogPostClient({ post }: { post: BlogPostContent | undefined }) {
   const router = useRouter();
 
   if (!post) {

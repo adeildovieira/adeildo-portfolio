@@ -1,259 +1,175 @@
 @import "tailwindcss";
 
-/* ============================================
-   ADEILDO VIEIRA PORTFOLIO
-   Color Palette: Black + Opalite Blue
-   Theme: Dark mode default with cinematic feel
-   ============================================ */
+/* ============================================================
+   ADEILDO VIEIRA — retro-terminal portfolio
+   Pure black canvas · monospace only · monochrome · no scroll
+   ============================================================ */
 
 :root {
-  /* Base colors */
-  --background: #050505;
+  --bg: #000000;
+  --fg: #e6e6e6;
+  --muted: #7a7a7a;
+  --line: #1b1b1b;       /* panel hairlines */
+  --line-bright: #2e2e2e; /* hover / active hairlines */
+  --opalite: #A7CEDC;    /* milky icy pale blue — the "dev" accent */
+
+  /* --- retained tokens used only by the legacy /blog route --- */
+  --background: #000000;
   --background-secondary: #0a0a0a;
-  --background-tertiary: #111111;
-  --foreground: #f0f0f0;
-  --foreground-muted: #a0a0a0;
-  
-  /* Opalite Blue - iridescent, ethereal tones */
-  --opalite-50: #e8f4fc;
-  --opalite-100: #d1e9f9;
-  --opalite-200: #a3d3f3;
+  --background-tertiary: #121212;
+  --foreground: #e6e6e6;
+  --foreground-muted: #7a7a7a;
   --opalite-300: #75bded;
-  --opalite-400: #47a7e7;
-  --opalite-500: #3b9ae0;
-  --opalite-600: #2d7ab8;
-  --opalite-700: #1f5a90;
-  --opalite-800: #113a68;
-  --opalite-900: #0a2340;
-  
-  /* Accent glow for hover states */
-  --glow-color: rgba(59, 154, 224, 0.4);
-  --glow-color-intense: rgba(59, 154, 224, 0.7);
+  --opalite-400: #9a9a9a; /* desaturated so /blog stays monochrome-ish */
+  --opalite-500: #7a7a7a;
 }
 
 @theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-bright: var(--line-bright);
+
+  /* The ONLY font family on the site is monospace.
+     Departure Mono (local) can be slotted in front later. */
+  --font-mono: var(--font-jetbrains), var(--font-geist-mono), ui-monospace,
+    SFMono-Regular, Menlo, monospace;
+  --font-sans: var(--font-jetbrains), var(--font-geist-mono), ui-monospace, monospace;
+
+  /* retained for /blog */
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
   --color-background-tertiary: var(--background-tertiary);
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
-  --color-opalite-50: var(--opalite-50);
-  --color-opalite-100: var(--opalite-100);
-  --color-opalite-200: var(--opalite-200);
   --color-opalite-300: var(--opalite-300);
   --color-opalite-400: var(--opalite-400);
   --color-opalite-500: var(--opalite-500);
-  --color-opalite-600: var(--opalite-600);
-  --color-opalite-700: var(--opalite-700);
-  --color-opalite-800: var(--opalite-800);
-  --color-opalite-900: var(--opalite-900);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-playfair);
 }
 
-/* Dark mode is the default - no media query needed */
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
-  overflow-x: hidden;
-  /* Add safe area padding for iOS */
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-}
-
-/* Ensure background fills iOS safe areas */
 html {
-  scroll-behavior: smooth;
-  background: var(--background);
-  /* Extend background into safe areas on iOS */
-  min-height: 100%;
-  min-height: -webkit-fill-available;
-  /* Fill the entire viewport including safe areas */
-  background-color: var(--background);
+  background: var(--bg);
+  color-scheme: dark;
 }
 
-/* Support iOS viewport units */
-@supports (min-height: 100dvh) {
-  html, body {
-    min-height: 100dvh;
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-feature-settings: "liga" 0; /* terminal feel: no ligatures */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Custom crosshair cursor: hide the native pointer on real mice
+   (skipped under reduced motion so the native cursor is never lost). */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .crosshair-cursor,
+  .crosshair-cursor * {
+    cursor: none !important;
   }
 }
 
-/* Custom scrollbar styling */
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* "dev" accent — colors the d, e, v in a[de]ildo [v]ieira; nothing else changes. */
+.dev {
+  color: var(--opalite);
+}
+
+/* Thin neutral scrollbar (only the /blog route scrolls). */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--background-secondary);
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--opalite-700);
+  background: #222;
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--opalite-600);
+  background: #333;
 }
 
-/* Text selection styling */
-::selection {
-  background: var(--opalite-600);
-  color: var(--foreground);
+/* ============================================================
+   Film grain — zero-network inline-SVG fractal noise.
+   GPU transform drift; frozen under prefers-reduced-motion.
+   ============================================================ */
+.film-grain {
+  position: fixed;
+  inset: -150%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='180'%20height='180'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.85'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  will-change: transform;
+  animation: grain-shift 8s steps(10) infinite;
 }
 
-/* Text shadow utility for better readability over grain */
-.text-shadow {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-5%, -5%); }
+  20%  { transform: translate(-10%, 5%); }
+  30%  { transform: translate(5%, -10%); }
+  40%  { transform: translate(-5%, 12%); }
+  50%  { transform: translate(-12%, 5%); }
+  60%  { transform: translate(12%, 0); }
+  70%  { transform: translate(0, 10%); }
+  80%  { transform: translate(-12%, 0); }
+  90%  { transform: translate(8%, 5%); }
+  100% { transform: translate(0, 0); }
 }
 
-.text-shadow-sm {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+/* Blinking terminal caret (hero wordmark). Frozen-on under reduced motion. */
+.caret {
+  animation: blink 1.15s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }
 
-.text-shadow-lg {
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+/* ============================================================
+   Reduced motion — honor the OS setting.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .film-grain {
+    animation: none !important;
+  }
 }
 
-/* ============================================
-   Glassmorphism Button Styles
-   Reusable glass effect for all interactive elements
-   ============================================ */
-
-/* Primary glass button — filled with opalite tint */
-.glass-btn-primary {
-  background: rgba(45, 122, 184, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(59, 154, 224, 0.3);
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.glass-btn-primary:hover {
-  background: rgba(45, 122, 184, 0.35);
-  border-color: rgba(59, 154, 224, 0.5);
-  box-shadow:
-    0 8px 32px rgba(59, 154, 224, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* Secondary / outline glass button */
+/* ============================================================
+   Legacy support for the /blog route only.
+   ============================================================ */
 .glass-btn-outline {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-bright);
+  transition: all 0.25s ease;
 }
-
 .glass-btn-outline:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(59, 154, 224, 0.4);
-  box-shadow:
-    0 8px 32px rgba(59, 154, 224, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #444;
 }
-
-/* Floating glass button (e.g. Back to Top) */
-.glass-btn-float {
-  background: rgba(45, 122, 184, 0.2);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(59, 154, 224, 0.25);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.glass-btn-float:hover {
-  background: rgba(45, 122, 184, 0.35);
-  border-color: rgba(59, 154, 224, 0.5);
-  box-shadow:
-    0 12px 40px rgba(59, 154, 224, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* Glass icon button (e.g. social icons, nav hamburger) */
-.glass-btn-icon {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.glass-btn-icon:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(59, 154, 224, 0.4);
-  box-shadow:
-    0 4px 16px rgba(59, 154, 224, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-/* Glass card — for content containers like Quick Facts */
-.glass-card {
-  background: rgba(20, 40, 65, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* Fade in animation for carousel */
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.4s ease-out forwards;
-}
-
-/* Infinite scroll animations for skills carousel */
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-33.33%);
-  }
-}
-
-.animate-scroll-slow {
-  animation: scroll-left 40s linear infinite;
-}
-
-.animate-scroll-medium {
-  animation: scroll-left 30s linear infinite;
-}
-
-.animate-scroll-fast {
-  animation: scroll-left 20s linear infinite;
-}
-
-.animate-direction-reverse {
-  animation-direction: reverse;
+.text-shadow,
+.text-shadow-sm,
+.text-shadow-lg {
+  text-shadow: none; /* monochrome canvas needs no readability shadow */
 }
