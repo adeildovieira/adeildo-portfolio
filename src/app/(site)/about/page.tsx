@@ -1,46 +1,38 @@
 import { Reveal } from "@/components/terminal/Reveal";
-import { Panel } from "@/components/terminal/Panel";
-import { AsciiArt, STARFIELD } from "@/components/terminal/AsciiArt";
-
-const FACTS = [
-  "Duke University, B.S. Computer Science, class of 2026.",
-  "From Alagoas, Brazil / roots in the Nordeste Sertão.",
-  "Fluent in Portuguese and English.",
-  "Interests: MPB and regional Nordeste music, literature, astronomy, film.",
-  "Cares about digital literacy/digital divide in Brazil's interior (Espaço 4.0).",
-];
 
 export default function AboutPage() {
   return (
-    <section
-      aria-labelledby="about-heading"
-      className="grid w-full gap-5 sm:gap-6 lg:grid-cols-[1.5fr_1fr]"
-    >
+    // Added mx-auto here to horizontally center the max-w-4xl container
+    <section aria-labelledby="about-heading" className="mx-auto w-full max-w-4xl">
+      <h1 id="about-heading" className="sr-only">
+        about
+      </h1>
+
       <Reveal>
-        <Panel label="about me" className="h-full p-6 sm:p-8">
-          <h1 id="about-heading" className="sr-only">
-            About me
-          </h1>
-          <p className="text-sm text-muted">$ who_am_i</p>
-          <p className="mt-2 text-xl font-bold sm:text-2xl">Adeildo Vieira</p>
+        {/* Using lowercase, generous line-height (leading-relaxed), 
+          and gap-8 for that clean, spaced-out editorial look.
+        */}
+        <div className="flex flex-col gap-7 text-[15px] lowercase leading-[1.8] text-muted sm:text-lg sm:leading-[1.8]">
+          <p>
+            Hi, I'm a 23-year-old software engineer. I've recently earned a bachelor of science degree in computer science from duke university (blue devil forever!). I am originally from northeast brazil, from a place known as the brazilian caribbean, Alagoas, surrounded by beautiful beaches and rivers.
+          </p>
 
-          <ul className="mt-7 space-y-3 text-sm leading-relaxed text-muted sm:text-base">
-            {FACTS.map((fact, i) => (
-              <li key={i} className="flex gap-3">
-                <span aria-hidden="true" className="select-none text-fg">
-                  ›
-                </span>
-                <span>{fact}</span>
-              </li>
-            ))}
-          </ul>
-        </Panel>
-      </Reveal>
+          <p>
+            i specialize in full-stack web development and auth systems. i use <span className="text-fg underline decoration-muted/40 underline-offset-4">🐍 python</span>, <span className="text-fg underline decoration-muted/40 underline-offset-4">⚙️ c</span>, and <span className="text-fg underline decoration-muted/40 underline-offset-4">⚛️ react</span> to build everything from iot to analytics platforms. i work across <span className="text-fg underline decoration-muted/40 underline-offset-4">🍎 macos</span> and <span className="text-fg underline decoration-muted/40 underline-offset-4">🐧 linux</span>.
+          </p>
 
-      <Reveal delay={0.1} className="hidden lg:block">
-        <Panel className="flex h-full items-center justify-center p-6">
-          <AsciiArt art={STARFIELD} className="text-sm" />
-        </Panel>
+          <p>
+            for me, functional, maintainable code is a form of craftsmanship and a way to communicate ideas clearly. i care deeply about user experience and building inclusive products that empower users.
+          </p>
+
+          <p>
+            outside of code, i care deeply about digital literacy and bridging the digital divide in brazil's interior through initiatives like espaço 4.0. when i'm offline, you can find me listening to mpb and regional nordeste music, reading literature, or studying astronomy and film.
+          </p>
+
+          <p>
+            the weather display provides real-time data from the open-meteo api for durham, nc.
+          </p>
+        </div>
       </Reveal>
     </section>
   );

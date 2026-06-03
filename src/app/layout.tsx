@@ -1,17 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Grain } from "@/components/terminal/Grain";
 import { Crosshair } from "@/components/terminal/Crosshair";
 import { MotionProvider } from "@/components/terminal/MotionProvider";
 
 /**
- * Monospace is the only family on the site (spec). JetBrains Mono is the
- * primary; Geist Mono is the fallback. Departure Mono can be dropped in as a
- * local next/font ahead of these later without touching anything else.
+ * Space Grotesk is the primary font for the new aesthetic.
+ * Geist Mono is kept for terminal accents (e.g., tags, index numbers).
  */
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
@@ -25,16 +23,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://adeildovieira.com"),
   title: {
-    default: "Adeildo Vieira — Software Engineer",
-    template: "%s — Adeildo Vieira",
+    default: "Adeildo Vieira - Software Engineer",
+    template: "%s - Adeildo Vieira",
   },
   description:
     "Adeildo Vieira — 2026 Duke University CS new grad. Software engineer. Prev. identity & auth at BTG Pactual; ML occupancy analytics at Duke Code+.",
   keywords: [
     "Adeildo Vieira",
+    "Adeildo Vieira Silva Neto",
     "Software Engineer",
     "New Grad",
     "Duke University",
+    "Ex-Aluno IFAL Santana",
     "BTG Pactual",
     "OAuth 2.0",
     "OIDC",
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://adeildovieira.com",
     siteName: "Adeildo Vieira",
-    title: "Adeildo Vieira — Software Engineer",
+    title: "Adeildo Vieira - Software Engineer",
     description:
       "2026 Duke CS new grad. Software engineer. Identity & auth, ML, full-stack.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adeildo Vieira — Software Engineer",
+    title: "Adeildo Vieira - Software Engineer",
     description:
       "2026 Duke CS new grad. Software engineer. Identity & auth, ML, full-stack.",
     creator: "@adeildovieira",
@@ -66,7 +66,6 @@ export const viewport: Viewport = {
   themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
-  // Lock to one viewport — the site is built around no vertical scroll.
   maximumScale: 1,
 };
 
@@ -89,16 +88,26 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" style={{ backgroundColor: "#000" }}>
+    // 1. Removed inline style={{ backgroundColor: "#000" }} 
+    <html lang="en">
       <body
-        className={`${jetbrains.variable} ${geistMono.variable} font-mono bg-bg text-fg crosshair-cursor`}
-        style={{ backgroundColor: "#000" }}
+        // 2. Swapped to Space Grotesk and Geist Mono variables
+        // 3. Removed bg-bg so it's transparent, added 'relative' for z-index stacking
+        className={`${spaceGrotesk.variable} ${geistMono.variable} relative font-sans text-fg crosshair-cursor`}
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <Grain />
+        
+        {/* --- GRAIN BACKGROUND --- */}
+        {/* 4. Added bg-[#000] here so the black background exists behind the grain */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 z-[-1] h-full w-full bg-[#000] bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/grain.gif')" }}
+        />
+        
         <Crosshair />
         <MotionProvider>{children}</MotionProvider>
       </body>

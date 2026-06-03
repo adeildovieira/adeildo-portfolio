@@ -1,5 +1,4 @@
 import { Reveal } from "@/components/terminal/Reveal";
-import { DragRow } from "@/components/terminal/DragRow";
 
 interface Role {
   role: string;
@@ -17,7 +16,7 @@ const ROLES: Role[] = [
     where: "São Paulo, BR",
     dates: "Jun–Aug 2025",
     impact:
-      "Built identity & authentication systems in production — OIDC, OAuth 2.0, PKCE — with feature-flagged rollout, logging/telemetry, and Redis-backed session state.",
+      "Direct impact on small-business (>8000) and clients (>5000). Built identity & authentication systems in production (OIDC, OAuth 2.0, PKCE) with feature-flagged rollout, logging/telemetry, and Redis-backed session state.",
     stack: ["OIDC", "OAuth 2.0", "PKCE", "Redis", "Telemetry"],
   },
   {
@@ -26,7 +25,7 @@ const ROLES: Role[] = [
     where: "Durham, NC",
     dates: "May–Aug 2024",
     impact:
-      "Shipped a Docker-containerized, ML-based occupancy-analytics platform for Duke Facilities — REST + PostgreSQL, models trained on 2M+ Wi-Fi / CO2 datapoints.",
+      "Direct impact on employees productivity, reduced 2h/day consulting data. Shipped a Docker-containerized, ML-based occupancy-analytics platform for Duke Facilities — REST + PostgreSQL, models trained on 2M+ Wi-Fi / CO2 datapoints.",
     stack: ["Docker", "PostgreSQL", "scikit-learn", "REST", "Linux"],
   },
   {
@@ -35,63 +34,77 @@ const ROLES: Role[] = [
     where: "Durham, NC",
     dates: "Jun 2023–Dec 2024",
     impact:
-      "Owned end-to-end 3D-printing delivery for 24 stakeholders — 47 custom models for health research — and standardized intake/handoff workflows.",
+      "Direct impact on researchers time, reducing turnarout from 3+ to 1-2 business days. Owned end-to-end 3D-printing delivery for 24 stakeholders, made 47 custom models for health research, and standardized intake/handoff workflows.",
     stack: ["Hardware", "Workflow", "Docs"],
   },
 ];
 
-function ExperiencePanel({ r }: { r: Role }) {
+function ExperienceItem({ r }: { r: Role }) {
   return (
-    <article className="flex h-full flex-col border border-line bg-white/[0.012] p-6 transition-colors duration-200 hover:border-line-bright">
-      <h2 className="text-base font-bold leading-tight sm:text-lg">{r.role}</h2>
-      <p className="mt-1 text-sm text-fg">{r.org}</p>
-      <p className="mt-0.5 text-xs text-muted">
-        {r.where} · {r.dates}
+    // Increased gap from gap-2 to gap-3
+    <article className="flex flex-col gap-3">
+      <header className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+        {/* Bumped title from text-sm to text-base, sm:text-base to sm:text-lg */}
+        <h2 className="text-base font-medium text-fg sm:text-lg">
+          {r.role} <span className="font-normal text-muted">— {r.org}</span>
+        </h2>
+        {/* Bumped metadata from text-xs to text-sm */}
+        <div className="mt-1 flex items-center gap-2 text-sm text-muted/70 sm:mt-0">
+          <time>{r.dates}</time>
+          <span className="hidden sm:inline">·</span>
+          <span className="hidden sm:inline">{r.where}</span>
+        </div>
+      </header>
+      
+      {/* Bumped description from text-sm to [15px] to match your About section, and sm:text-base */}
+      <p className="text-[15px] leading-relaxed text-muted sm:text-base">
+        {r.impact}
       </p>
-      <p className="mt-4 text-sm leading-relaxed text-muted">{r.impact}</p>
-      <ul className="mt-auto flex flex-wrap gap-1.5 pt-5">
-        {r.stack.map((s) => (
-          <li key={s} className="border border-line px-2 py-0.5 text-[11px] text-muted">
+      
+      {/* Bumped tags from text-[11px] to text-xs, increased top padding */}
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-2 text-xs text-muted/80">
+        {r.stack.map((s, i) => (
+          <span key={s} className="flex items-center gap-2">
             {s}
-          </li>
+            {i < r.stack.length - 1 && <span className="text-muted/30">•</span>}
+          </span>
         ))}
-      </ul>
+      </div>
     </article>
   );
 }
 
 export default function ExperiencePage() {
   return (
-    <section aria-labelledby="exp-heading" className="w-full">
+    // Added mx-auto and max-w-4xl to perfectly align with your About section width
+    <section aria-labelledby="exp-heading" className="mx-auto w-full max-w-4xl">
       <Reveal>
-        {/* Added flex container to align the heading and the resume link */}
-        <div className="flex items-center justify-between">
-          <h1 id="exp-heading" className="text-xs uppercase tracking-[0.3em] text-muted">
+        <div className="mb-12 flex items-center justify-between border-b border-line pb-4">
+          {/* Bumped section heading from text-xs to text-sm */}
+          <h1 id="exp-heading" className="text-sm uppercase tracking-[0.3em] text-muted">
             experience
           </h1>
           
-          {/* New Resume Link */}
+          {/* Bumped link from text-xs to text-sm */}
           <a
             href="/Adeildo_Vieira_Silva_Neto_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-muted transition-colors duration-200 hover:text-fg hover:underline underline-offset-4"
+            className="text-sm text-muted transition-colors duration-200 hover:text-fg hover:underline underline-offset-4"
           >
-            view resume in PDF ↗
+            view resume ↗
           </a>
         </div>
-        <p className="mb-8 mt-2 text-sm text-muted sm:text-base">I've shipped end-to-end on:</p>
       </Reveal>
       
-      <Reveal delay={0.1}>
-        <DragRow
-          ariaLabel="Experience"
-          slideClassName="basis-[86%] sm:basis-[400px]"
-          slides={ROLES.map((r) => (
-            <ExperiencePanel key={r.org} r={r} />
-          ))}
-        />
-      </Reveal>
+      {/* Increased row gap from gap-10 to gap-12 to accommodate larger text */}
+      <div className="flex flex-col gap-12">
+        {ROLES.map((r, index) => (
+          <Reveal key={r.org} delay={0.1 + index * 0.1}>
+            <ExperienceItem r={r} />
+          </Reveal>
+        ))}
+      </div>
     </section>
   );
 }
