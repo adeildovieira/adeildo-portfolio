@@ -14,13 +14,13 @@ export default function IndexPage() {
       <Reveal>
         <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-bold lowercase leading-[0.9] tracking-[0.04em]">
           a<span className="dev">de</span>ildo <span className="dev">v</span>ieira
-          <span className="caret font-normal text-fg">_</span>
+          {/* <span className="caret font-normal text-fg">_</span> */}
         </h1>
       </Reveal>
 
       <Reveal delay={0.12}>
         <p className="mt-6 text-xs text-muted sm:mt-9 sm:text-sm md:text-base">
-          {"/* cs@duke · software engineer */"}
+          {"/* cs @ duke · software engineer */"}
         </p>
       </Reveal>
 

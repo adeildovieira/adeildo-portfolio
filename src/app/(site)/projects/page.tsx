@@ -1,6 +1,4 @@
 import { Reveal } from "@/components/terminal/Reveal";
-import { DragRow } from "@/components/terminal/DragRow";
-import { AsciiArt, SLATS } from "@/components/terminal/AsciiArt";
 
 interface Project {
   idx: string;
@@ -27,7 +25,7 @@ const PROJECTS: Project[] = [
     title: "MealPilot",
     tagline: "Microsoft AI for Good hackathon",
     blurb:
-      "Agentic AI meets urban nutrition: A Copilot Studio agent using Azure Maps to surface geo-personalized healthy-meal options across NYC. A 28-student pilot hit 80% task success in 45s (vs ~5 min), targeting >30% food-insecure areas.",
+      "Agentic AI + urban nutrition: A Copilot Studio agent using Azure Maps to surface geo-personalized healthy-meal options across NYC. A 28-student pilot hit 80% task success in 45s (vs ~5 min), targeting >30% food-insecure areas.",
     stack: ["Python", "Copilot Studio", "Azure Maps"],
   },
   {
@@ -49,63 +47,64 @@ const PROJECTS: Project[] = [
     stack: ["Python", "TensorFlow", "CNN"],
     href: "https://github.com/adeildovieira/ML-Class-Final-Project",
   },
-  {
-    idx: "05",
-    title: "DartHub",
-    tagline: "Star Wars to-do app",
-    blurb:
-      "A Flutter + Firebase to-do app with authentication and real-time sync, a playful Dark Side aesthetic, and Android + Web support. Team project.",
-    stack: ["Flutter", "Dart", "Firebase"],
-    href: "https://github.com/adeildovieira/StarWars-To-Do-App-Flutter",
-  },
-  {
-    idx: "06",
-    title: "This Portfolio",
-    tagline: "the site you're on",
-    blurb:
-      "Retro-terminal, monospace, no-scroll. Next.js + TypeScript + Tailwind, embla drag-to-pull, live Open-Meteo weather, static-exported - built on a main/prod branch strategy with semantic versioning.",
-    stack: ["Next.js", "TypeScript", "Tailwind", "embla"],
-    href: "https://github.com/adeildovieira/adeildo-portfolio",
-  },
+  // {
+  //   idx: "05",
+  //   title: "DartHub",
+  //   tagline: "Star Wars to-do app",
+  //   blurb:
+  //     "A Flutter + Firebase to-do app with authentication and real-time sync, a playful Dark Side aesthetic, and Android + Web support. Team project.",
+  //   stack: ["Flutter", "Dart", "Firebase"],
+  //   href: "https://github.com/adeildovieira/StarWars-To-Do-App-Flutter",
+  // },
+  // {
+  //   idx: "06",
+  //   title: "This Portfolio",
+  //   tagline: "the site you're on",
+  //   blurb:
+  //     "Retro-terminal, monospace, no-scroll. Next.js + TypeScript + Tailwind, embla drag-to-pull, live Open-Meteo weather, static-exported - built on a main/prod branch strategy with semantic versioning.",
+  //   stack: ["Next.js", "TypeScript", "Tailwind", "embla"],
+  //   href: "https://github.com/adeildovieira/adeildo-portfolio",
+  // },
 ];
 
-function ProjectCard({ p }: { p: Project }) {
+function ProjectItem({ p }: { p: Project }) {
   return (
-    <article className="flex h-full flex-col border border-line bg-white/[0.012] p-6 transition-colors duration-200 hover:border-line-bright sm:flex-row sm:gap-6">
-      {/* left — title + tagline + stack */}
-      <div className="flex flex-col sm:w-1/3">
-        <span className="text-xs text-muted">{p.idx}</span>
-        <h2 className="mt-1 text-lg font-bold leading-tight">{p.title}</h2>
-        <p className="mt-1 text-sm text-muted">{p.tagline}</p>
-        <ul className="mt-auto hidden flex-wrap gap-1.5 pt-5 sm:flex">
-          {p.stack.map((s) => (
-            <li key={s} className="border border-line px-1.5 py-0.5 text-[10px] text-muted">
-              {s}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* middle — monochrome visual tile */}
-      <div className="my-4 flex items-center justify-center border border-line py-7 sm:my-0 sm:w-1/5 sm:py-0">
-        <span className="text-4xl font-bold tracking-tighter text-[#2a2a2a] sm:text-5xl">
-          {p.idx}
-        </span>
-      </div>
-
-      {/* right — blurb + link */}
-      <div className="flex flex-col sm:w-[46%]">
-        <p className="text-sm leading-relaxed text-muted">{p.blurb}</p>
+    // Increased gap from gap-2 to gap-3
+    <article className="flex flex-col gap-3">
+      {/* Header: Title + Tagline on left, Link on right */}
+      <header className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+        {/* Bumped title from text-sm to text-base, sm:text-base to sm:text-lg */}
+        <h2 className="text-base font-medium text-fg sm:text-lg">
+          {/* Bumped index from text-xs to text-sm */}
+          <span className="mr-3 font-mono text-sm text-muted/40">{p.idx}</span>
+          {p.title} <span className="font-normal text-muted">— {p.tagline}</span>
+        </h2>
         {p.href && (
           <a
             href={p.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-auto inline-flex w-fit items-center gap-1 pt-5 text-sm text-fg underline-offset-4 hover:underline"
+            // Bumped link from text-xs to text-sm
+            className="mt-1 text-sm text-muted transition-colors duration-200 hover:text-fg hover:underline underline-offset-4 sm:mt-0"
           >
             {p.hrefLabel ?? "GitHub"} ↗
           </a>
         )}
+      </header>
+      
+      {/* Bumped blurb description to [15px] and sm:text-base */}
+      <p className="text-[15px] leading-relaxed text-muted sm:text-base">
+        {p.blurb}
+      </p>
+      
+      {/* Bumped tags from text-[11px] to text-xs, increased top padding */}
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-2 text-xs text-muted/80">
+        {p.stack.map((s, i) => (
+          <span key={s} className="flex items-center gap-2">
+            {s}
+            {i < p.stack.length - 1 && <span className="text-muted/30">•</span>}
+          </span>
+        ))}
       </div>
     </article>
   );
@@ -113,45 +112,35 @@ function ProjectCard({ p }: { p: Project }) {
 
 export default function ProjectsPage() {
   return (
-    <section aria-labelledby="proj-heading" className="relative w-full">
-      {/* ASCII motifs bleeding off the edges — there's more to pull into view */}
-      <AsciiArt
-        art={SLATS}
-        className="absolute -left-6 top-1/2 hidden -translate-y-1/2 text-sm xl:block"
-      />
-      <AsciiArt
-        art={SLATS}
-        className="absolute -right-6 top-1/2 hidden -translate-y-1/2 text-sm xl:block"
-      />
-
+    // Added mx-auto and max-w-4xl to center and bound the section
+    <section aria-labelledby="proj-heading" className="mx-auto w-full max-w-4xl">
       <Reveal>
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <h1 id="proj-heading" className="text-xs uppercase tracking-[0.3em] text-muted">
-              projects
-            </h1>
-            <p className="mt-2 text-sm text-muted sm:text-base">things I&apos;ve built.</p>
-          </div>
+        <div className="mb-12 flex items-center justify-between border-b border-line pb-4">
+          {/* Bumped section heading from text-xs to text-sm */}
+          <h1 id="proj-heading" className="text-sm uppercase tracking-[0.3em] text-muted">
+            projects
+          </h1>
+          
+          {/* Bumped main link from text-xs to text-sm */}
           <a
             href="https://github.com/adeildovieira"
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 text-xs text-muted transition-colors hover:text-fg sm:text-sm"
+            className="text-sm text-muted transition-colors duration-200 hover:text-fg hover:underline underline-offset-4"
           >
             view all projects ↗
           </a>
         </div>
       </Reveal>
 
-      <Reveal delay={0.1}>
-        <DragRow
-          ariaLabel="Projects"
-          slideClassName="basis-[90%] sm:basis-[600px]"
-          slides={PROJECTS.map((p) => (
-            <ProjectCard key={p.title} p={p} />
-          ))}
-        />
-      </Reveal>
+      {/* Increased row gap from gap-10 to gap-12 */}
+      <div className="flex flex-col gap-12">
+        {PROJECTS.map((p, index) => (
+          <Reveal key={p.title} delay={0.1 + index * 0.1}>
+            <ProjectItem p={p} />
+          </Reveal>
+        ))}
+      </div>
     </section>
   );
 }
