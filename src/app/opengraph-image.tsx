@@ -4,6 +4,9 @@ import { ImageResponse } from "next/og";
  * Open Graph / Twitter card image, generated at build time.
  * Next injects this as both `og:image` and `twitter:image`.
  */
+// Required so the image is emitted as a static file under `output: export`.
+export const dynamic = "force-static";
+
 export const alt = "Adeildo Vieira — Software Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

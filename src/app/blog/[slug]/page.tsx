@@ -164,5 +164,5 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = blogPosts[slug];
 
-  return <BlogPostClient post={post} slug={slug} />;
+  return <BlogPostClient post={post} />;
 }

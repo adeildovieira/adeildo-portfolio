@@ -1,23 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { JetBrains_Mono, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Grain } from "@/components/terminal/Grain";
+import { Crosshair } from "@/components/terminal/Crosshair";
+import { MotionProvider } from "@/components/terminal/MotionProvider";
 
 /**
- * Font Configuration
- * 
- * Typography that reflects personality:
- * - Playfair Display: Elegant serif for headlines — expressive, artistic energy
- * - Geist Sans: Clean modern sans-serif for body text
- * - Geist Mono: Code blocks and technical elements
+ * Monospace is the only family on the site (spec). JetBrains Mono is the
+ * primary; Geist Mono is the fallback. Departure Mono can be dropped in as a
+ * local next/font ahead of these later without touching anything else.
  */
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
 });
@@ -28,75 +22,58 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-/**
- * Metadata Configuration
- * 
- * SEO-optimized metadata for better discoverability.
- * Update these values with your actual information.
- */
 export const metadata: Metadata = {
   metadataBase: new URL("https://adeildovieira.com"),
   title: {
-    default: "Adeildo Vieira | Software Engineer",
-    template: "%s | Adeildo Vieira",
+    default: "Adeildo Vieira — Software Engineer",
+    template: "%s — Adeildo Vieira",
   },
   description:
-    "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
+    "Adeildo Vieira — 2026 Duke University CS new grad. Software engineer. Prev. identity & auth at BTG Pactual; ML occupancy analytics at Duke Code+.",
   keywords: [
-    "Adeildo Vieira Silva Neto",
     "Adeildo Vieira",
     "Software Engineer",
-    "Full Stack Developer",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Portfolio",
     "New Grad",
     "Duke University",
     "BTG Pactual",
+    "OAuth 2.0",
+    "OIDC",
+    "Next.js",
+    "TypeScript",
   ],
-  authors: [{ name: "Adeildo Vieira Silva Neto" }],
-  creator: "Adeildo Vieira Silva Neto",
+  authors: [{ name: "Adeildo Vieira" }],
+  creator: "Adeildo Vieira",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://adeildovieira.com",
     siteName: "Adeildo Vieira",
-    title: "Adeildo Vieira | Software Engineer",
+    title: "Adeildo Vieira — Software Engineer",
     description:
-      "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
-    // og:image is generated at build time by app/opengraph-image.tsx
+      "2026 Duke CS new grad. Software engineer. Identity & auth, ML, full-stack.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adeildo Vieira | Software Engineer",
+    title: "Adeildo Vieira — Software Engineer",
     description:
-      "Computer Science at Duke '26. New Grad. Prev. SWE Intern at BTG Pactual Bank, SWE Intern at Duke Code+ Program.",
+      "2026 Duke CS new grad. Software engineer. Identity & auth, ML, full-stack.",
     creator: "@adeildovieira",
-    // twitter:image falls back to the generated opengraph-image
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    // apple-touch-icon is generated at build time by app/apple-icon.tsx
-  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  // Match the true page background so Safari bars / safe areas don't flash navy.
-  themeColor: "#050505",
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
+  // Lock to one viewport — the site is built around no vertical scroll.
+  maximumScale: 1,
 };
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Adeildo Vieira Silva Neto",
-  alternateName: "Ade Vieira",
+  name: "Adeildo Vieira",
   url: "https://adeildovieira.com",
   email: "mailto:me@adeildovieira.com",
   jobTitle: "Software Engineer",
@@ -104,34 +81,26 @@ const personSchema = {
     "https://github.com/adeildovieira",
     "https://linkedin.com/in/adeildovieira",
   ],
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Duke University",
-  },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Durham",
-    addressRegion: "NC",
-    addressCountry: "US",
-  },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Duke University" },
+  nationality: "Brazilian",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark" style={{ backgroundColor: "#050505" }}>
+    <html lang="en" style={{ backgroundColor: "#000" }}>
       <body
-        className={`${playfair.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground cursor-none`}
-        style={{ backgroundColor: "#050505" }}
+        className={`${jetbrains.variable} ${geistMono.variable} font-mono bg-bg text-fg crosshair-cursor`}
+        style={{ backgroundColor: "#000" }}
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        {children}
+        <Grain />
+        <Crosshair />
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

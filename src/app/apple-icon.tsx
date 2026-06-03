@@ -4,6 +4,9 @@ import { ImageResponse } from "next/og";
  * Apple touch icon, generated at build time (replaces the missing
  * /apple-touch-icon.png that metadata previously pointed at).
  */
+// Required so the icon is emitted as a static file under `output: export`.
+export const dynamic = "force-static";
+
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 

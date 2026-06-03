@@ -7,7 +7,7 @@
 
 ## What we're building
 
-A personal portfolio for **Adeildo "Ade" Vieira** — a 2026 Duke University CS new grad looking for US software-engineering roles. One site, **four sections**, and the hard rule: **no vertical scrolling**. Every section fills exactly one viewport and arranges its content in bordered panels ("tables").
+A personal portfolio for **Adeildo Vieira** — a 2026 Duke University CS new grad looking for US software-engineering roles. One site, **four sections**, and the hard rule: **no vertical scrolling**. Every section fills exactly one viewport and arranges its content in bordered panels ("tables").
 
 The aesthetic is a **minimal, retro-terminal** look: pure-black canvas, monospace type everywhere, lots of negative space, a couple of ASCII-art flourishes, a live weather readout in the footer, and a horizontal **drag-to-pull** projects carousel. Reference *vibe* (not content): pandadev.net — match the feel; every word, project, and asset below is mine.
 

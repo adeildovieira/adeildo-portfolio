@@ -1,258 +1,115 @@
 @import "tailwindcss";
 
-/* ============================================
-   ADEILDO VIEIRA PORTFOLIO
-   Color Palette: Black + Opalite Blue
-   Theme: Dark mode default with cinematic feel
-   ============================================ */
+/* ============================================================
+   ADEILDO VIEIRA — retro-terminal portfolio
+   Pure black canvas · monospace only · monochrome · no scroll
+   ============================================================ */
 
 :root {
-  /* Base colors */
-  --background: #050505;
+  --bg: #000000;
+  --fg: #e6e6e6;
+  --muted: #7a7a7a;
+  --line: #1b1b1b;       /* panel hairlines */
+  --line-bright: #2e2e2e; /* hover / active hairlines */
+  --opalite: #A7CEDC;    /* milky icy pale blue — the "dev" accent */
+
+  /* --- retained tokens used only by the legacy /blog route --- */
+  --background: #000000;
   --background-secondary: #0a0a0a;
-  --background-tertiary: #111111;
-  --foreground: #f0f0f0;
-  --foreground-muted: #a0a0a0;
-
-  /* Opalite Blue - iridescent, ethereal tones */
-  --opalite-50: #e8f4fc;
-  --opalite-100: #d1e9f9;
-  --opalite-200: #a3d3f3;
+  --background-tertiary: #121212;
+  --foreground: #e6e6e6;
+  --foreground-muted: #7a7a7a;
   --opalite-300: #75bded;
-  --opalite-400: #47a7e7;
-  --opalite-500: #3b9ae0;
-  --opalite-600: #2d7ab8;
-  --opalite-700: #1f5a90;
-  --opalite-800: #113a68;
-  --opalite-900: #0a2340;
-
-  /* Accent glow for hover states */
-  --glow-color: rgba(59, 154, 224, 0.4);
-  --glow-color-intense: rgba(59, 154, 224, 0.7);
+  --opalite-400: #9a9a9a; /* desaturated so /blog stays monochrome-ish */
+  --opalite-500: #7a7a7a;
 }
 
 @theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-bright: var(--line-bright);
+
+  /* The ONLY font family on the site is monospace.
+     Departure Mono (local) can be slotted in front later. */
+  --font-mono: var(--font-jetbrains), var(--font-geist-mono), ui-monospace,
+    SFMono-Regular, Menlo, monospace;
+  --font-sans: var(--font-jetbrains), var(--font-geist-mono), ui-monospace, monospace;
+
+  /* retained for /blog */
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
   --color-background-tertiary: var(--background-tertiary);
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
-  --color-opalite-50: var(--opalite-50);
-  --color-opalite-100: var(--opalite-100);
-  --color-opalite-200: var(--opalite-200);
   --color-opalite-300: var(--opalite-300);
   --color-opalite-400: var(--opalite-400);
   --color-opalite-500: var(--opalite-500);
-  --color-opalite-600: var(--opalite-600);
-  --color-opalite-700: var(--opalite-700);
-  --color-opalite-800: var(--opalite-800);
-  --color-opalite-900: var(--opalite-900);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-playfair);
 }
 
-/* ============================================
-   Lenis Smooth Scroll
-   ============================================ */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-/* Dark mode is the default - no media query needed */
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
-  overflow-x: hidden;
-  /* Add safe area padding for iOS */
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-}
-
-/* Ensure background fills iOS safe areas */
 html {
-  background: var(--background);
-  min-height: 100%;
-  min-height: -webkit-fill-available;
-  background-color: var(--background);
+  background: var(--bg);
+  color-scheme: dark;
 }
 
-/* Support iOS viewport units */
-@supports (min-height: 100dvh) {
-  html, body {
-    min-height: 100dvh;
-  }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-feature-settings: "liga" 0; /* terminal feel: no ligatures */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-/* Custom scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--opalite-700);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--opalite-600);
-}
-
-/* Text selection styling */
-::selection {
-  background: var(--opalite-600);
-  color: var(--foreground);
-}
-
-/* Custom cursor — hide default on devices that support hover.
-   Skipped under reduced motion so the native cursor is never lost. */
+/* Custom crosshair cursor: hide the native pointer on real mice
+   (skipped under reduced motion so the native cursor is never lost). */
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .cursor-none,
-  .cursor-none * {
+  .crosshair-cursor,
+  .crosshair-cursor * {
     cursor: none !important;
   }
 }
 
-/* ============================================
-   Reduced motion — honor the user's OS setting.
-   Neutralizes CSS keyframe/transition motion; the JS-driven
-   Framer Motion + Lenis are gated in their components.
-   ============================================ */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  .film-grain {
-    animation: none !important;
-  }
+::selection {
+  background: var(--fg);
+  color: var(--bg);
 }
 
-/* Text shadow utility for better readability over grain */
-.text-shadow {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+/* "dev" accent — colors the d, e, v in a[de]ildo [v]ieira; nothing else changes. */
+.dev {
+  color: var(--opalite);
 }
 
-.text-shadow-sm {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+/* Thin neutral scrollbar (only the /blog route scrolls). */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }
 
-.text-shadow-lg {
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
-}
-
-/* ============================================
-   Glassmorphism Button Styles
-   Reusable glass effect for all interactive elements
-   ============================================ */
-
-/* Primary glass button — filled with opalite tint */
-.glass-btn-primary {
-  background: rgba(45, 122, 184, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(59, 154, 224, 0.3);
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.glass-btn-primary:hover {
-  background: rgba(45, 122, 184, 0.35);
-  border-color: rgba(59, 154, 224, 0.5);
-  box-shadow:
-    0 8px 32px rgba(59, 154, 224, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* Secondary / outline glass button */
-.glass-btn-outline {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  transition: all 0.3s ease;
-}
-
-.glass-btn-outline:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(59, 154, 224, 0.4);
-  box-shadow:
-    0 8px 32px rgba(59, 154, 224, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* Glass icon button (e.g. social icons, nav hamburger) */
-.glass-btn-icon {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.glass-btn-icon:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(59, 154, 224, 0.4);
-  box-shadow:
-    0 4px 16px rgba(59, 154, 224, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-/* Glass card — for content containers */
-.glass-card {
-  background: rgba(20, 40, 65, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* ============================================
-   Film Grain Overlay (zero-network SVG noise)
-   Replaces a 2.8MB animated GIF. GPU-only transform
-   animation; frozen under prefers-reduced-motion.
-   ============================================ */
+/* ============================================================
+   Film grain — zero-network inline-SVG fractal noise.
+   GPU transform drift; frozen under prefers-reduced-motion.
+   ============================================================ */
 .film-grain {
   position: fixed;
   inset: -150%;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-  opacity: 0.09;
+  opacity: 0.045;
   background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='180'%20height='180'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.85'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   will-change: transform;
@@ -273,101 +130,46 @@ html {
   100% { transform: translate(0, 0); }
 }
 
-/* ============================================
-   Marquee / Scroll Animations
-   ============================================ */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
+/* Blinking terminal caret (hero wordmark). Frozen-on under reduced motion. */
+.caret {
+  animation: blink 1.15s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* ============================================================
+   Reduced motion — honor the OS setting.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee-slow {
-  animation: marquee 60s linear infinite;
-}
-
-.animate-marquee-medium {
-  animation: marquee 45s linear infinite;
-}
-
-.animate-marquee-fast {
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee-reverse {
-  animation-direction: reverse;
-}
-
-/* Pause marquee on hover */
-.marquee-row:hover .animate-marquee-slow,
-.marquee-row:hover .animate-marquee-medium,
-.marquee-row:hover .animate-marquee-fast {
-  animation-play-state: paused;
-}
-
-/* ============================================
-   Link hover underline effect
-   ============================================ */
-.link-underline {
-  position: relative;
-}
-
-.link-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--opalite-400);
-  transition: width 0.3s ease;
-}
-
-.link-underline:hover::after {
-  width: 100%;
-}
-
-/* Fade in animation for carousel (legacy — used by blog pages) */
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
+  .film-grain {
+    animation: none !important;
   }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.4s ease-out forwards;
+/* ============================================================
+   Legacy support for the /blog route only.
+   ============================================================ */
+.glass-btn-outline {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-bright);
+  transition: all 0.25s ease;
 }
-
-/* Legacy scroll animations (used by blog pages) */
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-33.33%);
-  }
+.glass-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #444;
 }
-
-.animate-scroll-slow {
-  animation: scroll-left 40s linear infinite;
-}
-
-.animate-scroll-medium {
-  animation: scroll-left 30s linear infinite;
-}
-
-.animate-scroll-fast {
-  animation: scroll-left 20s linear infinite;
-}
-
-.animate-direction-reverse {
-  animation-direction: reverse;
+.text-shadow,
+.text-shadow-sm,
+.text-shadow-lg {
+  text-shadow: none; /* monochrome canvas needs no readability shadow */
 }
