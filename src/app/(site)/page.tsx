@@ -12,8 +12,12 @@ export default function IndexPage() {
       <AsciiArt art={STARFIELD} className="mb-7 text-[10px] sm:mb-9 sm:text-xs" />
 
       <Reveal>
-        <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-bold lowercase leading-[0.9] tracking-[0.04em]">
-          a<span className="dev">de</span>ildo <span className="dev">v</span>ieira
+        <h1 className="text-left text-[clamp(2.5rem,7vw,5.5rem)] font-bold lowercase leading-[0.95] tracking-[0.04em]">
+          a<span className="dev">de</span>ildo
+          <br />
+          <span className="inline-block pl-[1.5ch] sm:pl-[2.5ch]">
+            <span className="dev">v</span>ieira
+          </span>
           {/* <span className="caret font-normal text-fg">_</span> */}
         </h1>
       </Reveal>
