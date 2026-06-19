@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s - Adeildo Vieira",
   },
   description:
-    "Adeildo Vieira — 2026 Duke University CS new grad. Software engineer. Prev. identity & auth at BTG Pactual; ML occupancy analytics at Duke Code+.",
+    "Adeildo Vieira - 2026 Duke University CS new grad. Software engineer. Prev. identity & auth at BTG Pactual; ML occupancy analytics at Duke Code+.",
   keywords: [
     "Adeildo Vieira",
     "Adeildo Vieira Silva Neto",
@@ -40,6 +40,14 @@ export const metadata: Metadata = {
     "OIDC",
     "Next.js",
     "TypeScript",
+    "AI Developer",
+    "ML Engineer",
+    "Full-Stack Developer",
+    "Python",
+    "C",
+    "React",
+    "MacOS",
+    "Linux",
   ],
   authors: [{ name: "Adeildo Vieira" }],
   creator: "Adeildo Vieira",
@@ -50,13 +58,13 @@ export const metadata: Metadata = {
     siteName: "Adeildo Vieira",
     title: "Adeildo Vieira - Software Engineer",
     description:
-      "2026 Duke CS new grad. Software engineer. Identity & auth, ML, full-stack.",
+      "2026 Duke CS new grad. Software engineer. Identity & auth, AI/ML, full-stack.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Adeildo Vieira - Software Engineer",
     description:
-      "2026 Duke CS new grad. Software engineer. Identity & auth, ML, full-stack.",
+      "2026 Duke CS new grad. Software engineer. Identity & auth, AI/ML, full-stack.",
     creator: "@adeildovieira",
   },
   robots: { index: true, follow: true },

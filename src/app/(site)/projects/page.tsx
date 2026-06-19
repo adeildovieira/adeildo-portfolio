@@ -14,7 +14,7 @@ const PROJECTS: Project[] = [
   {
     idx: "01",
     title: "RepSense AI",
-    tagline: "ESP32 + OpenAI workout coach",
+    tagline: "Microcontroller + OpenAI API workout coach",
     blurb:
       "Gym rep counters don't say much. RepSense is a real-time, on-device coach that uses an ESP32-S3 and IMU data to analyze bench-press form and provide feedback - rep count, imbalance, tempo, rest quality - via the OpenAI API.",
     stack: ["C", "ESP32", "IMU", "OpenAI API", "IoT"],
@@ -22,11 +22,13 @@ const PROJECTS: Project[] = [
   },
   {
     idx: "02",
-    title: "MealPilot",
-    tagline: "Microsoft AI for Good hackathon",
+    title: "Can LLMs Unlearn?",
+    tagline: "Evaluating ROME & MEMIT Knowledge Editing Across GPT-2 Models",
     blurb:
-      "Agentic AI + urban nutrition: A Copilot Studio agent using Azure Maps to surface geo-personalized healthy-meal options across NYC. A 28-student pilot hit 80% task success in 45s (vs ~5 min), targeting >30% food-insecure areas.",
-    stack: ["Python", "Copilot Studio", "Azure Maps"],
+      "Tested whether an AI can be made to forget or correct specific facts without full retraining, a core question for privacy and the 'right to be forgotten.' Led the evaluation of two leading editing methods (ROME and MEMIT, Meng et al.) across GPT-2 model sizes, measuring whether edits worked, stayed contained, survived rephrasing, and kept the model fluent. Found that the smallest model corrupted unrelated facts and the largest failed to hold edits when they were rephrased, while mid-size models performed best",
+    stack: ["PyTorch", "Python", "NLP", "ML", "LLMs"],
+    href: "https://docs.google.com/presentation/d/10Vp9TeQUrAgbz3R3MHKGxuFuVl-hxv3zXkx0wBsSz0M/edit?slide=id.p#slide=id.p",
+    hrefLabel: "Presentation",
   },
   {
     idx: "03",
@@ -43,28 +45,28 @@ const PROJECTS: Project[] = [
     title: "CNN Waste Classification",
     tagline: "deep learning for recycling",
     blurb:
-      "A convolutional neural net that sorts waste imagery into recyclables, organics, and landfill - trained for sustainable waste-management workflows.",
+      "A convolutional neural network that sorts waste imagery into recyclables, organics, and landfill - trained for sustainable waste-management workflows.",
     stack: ["Python", "TensorFlow", "CNN"],
     href: "https://github.com/adeildovieira/ML-Class-Final-Project",
   },
-  // {
-  //   idx: "05",
-  //   title: "DartHub",
-  //   tagline: "Star Wars to-do app",
-  //   blurb:
-  //     "A Flutter + Firebase to-do app with authentication and real-time sync, a playful Dark Side aesthetic, and Android + Web support. Team project.",
-  //   stack: ["Flutter", "Dart", "Firebase"],
-  //   href: "https://github.com/adeildovieira/StarWars-To-Do-App-Flutter",
-  // },
-  // {
-  //   idx: "06",
-  //   title: "This Portfolio",
-  //   tagline: "the site you're on",
-  //   blurb:
-  //     "Retro-terminal, monospace, no-scroll. Next.js + TypeScript + Tailwind, embla drag-to-pull, live Open-Meteo weather, static-exported - built on a main/prod branch strategy with semantic versioning.",
-  //   stack: ["Next.js", "TypeScript", "Tailwind", "embla"],
-  //   href: "https://github.com/adeildovieira/adeildo-portfolio",
-  // },
+  {
+    idx: "05",
+    title: "DartHub",
+    tagline: "Star Wars to-do app",
+    blurb:
+      "A Flutter + Firebase to-do app with authentication and real-time sync, a playful Dark Side aesthetic, and Android + Web support. Team project.",
+    stack: ["Flutter", "Dart", "Firebase", "Android Studio"],
+    href: "https://github.com/adeildovieira/StarWars-To-Do-App-Flutter",
+  },
+  {
+    idx: "06",
+    title: "This Portfolio",
+    tagline: "the site you're on",
+    blurb:
+      "Retro-terminal, monospace, no-scroll. Next.js + TypeScript + Tailwind, embla drag-to-pull, live Open-Meteo weather, static-exported - built on a main/prod branch strategy with semantic versioning.",
+    stack: ["Cloudflare", "Next.js", "TypeScript", "Tailwind", "embla"],
+    href: "https://github.com/adeildovieira/adeildo-portfolio",
+  },
 ];
 
 function ProjectItem({ p }: { p: Project }) {

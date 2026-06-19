@@ -24,7 +24,7 @@ export default function IndexPage() {
 
       <Reveal delay={0.12}>
         <p className="mt-6 text-xs text-muted sm:mt-9 sm:text-sm md:text-base">
-          {"/* cs @ duke · software engineer */"}
+          {"/* duke alum · software engineer */"}
         </p>
       </Reveal>
 

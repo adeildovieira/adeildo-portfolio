@@ -1,6 +1,6 @@
 # adeildo vieira — portfolio
 
-v0.6.4
+v0.7.0
 
 My personal site. It's a small, deliberate thing: four screens, no scrolling, black on black, the kind of monospace-leaning layout that feels like a terminal you'd actually want to sit in front of. It lives at [adeildovieira.com](https://adeildovieira.com).
 
