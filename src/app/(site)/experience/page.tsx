@@ -11,13 +11,30 @@ interface Role {
 
 const ROLES: Role[] = [
   {
+    role: "Founding Software Engineer",
+    org: "Stealth AI Startup",
+    where: "USA",
+    dates: "May 2026–Present",
+    impact: "",
+    stack: ["AI API", "OpenAI", "OIDC", "HTTPS", "TypeScript", "React", "Next.js"],
+  },
+  {
     role: "Software Engineer Intern",
-    org: "BTG Pactual",
+    org: "BTG Pactual Bank",
     where: "São Paulo, BR",
     dates: "Jun–Aug 2025",
     impact:
-      "Direct impact on small-business (>8000) and clients (>5000). Built identity & authentication systems in production (OIDC, OAuth 2.0, PKCE) with feature-flagged rollout, logging/telemetry, and Redis-backed session state.",
+      "Direct impact on small-business (>8000) and clients (>5000), 47% faster login torwards a 1-second goal. Built 'Login with BTG ID' (OIDC, OAuth 2.0, PKCE) with feature-flagged rollout, logging/telemetry, and Redis-backed session state.",
     stack: ["OIDC", "OAuth 2.0", "PKCE", "Redis", "Telemetry"],
+  },
+  {
+    role: "Software Engineering and AI Mentee",
+    org: "Microsoft and Persistent Systems",
+    where: "New York City, NY",
+    dates: "Jul–Aug 2024",
+    impact:
+      "Direct impact on tiem to find healthier food options across NYC Metro Area, 45s vs 5-minute manual baseline. Built MealPilot, a conversational AI agent that helps users find healthier food options across NYC, combining Microsoft Copilot Studio with Azure Maps for location and place search.",
+    stack: ["Azure Maps API", "Copilot Studio", "Python", "Figma", "AI Agent Design"],
   },
   {
     role: "Software Engineer Intern",
