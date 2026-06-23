@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getWeather, PEREIRO, type Weather as WeatherData } from "@/lib/weather";
+import { useConsent } from "./ConsentProvider";
 
 const CACHE_KEY = "weather:pereiro";
 
@@ -9,11 +10,27 @@ const CACHE_KEY = "weather:pereiro";
  * Live weather readout for the footer, e.g. `13.9°C Rain`. Fetched once per
  * session (sessionStorage-cached). Renders nothing until data is in hand and
  * stays hidden on failure — never a broken or loading stub.
+ *
+ * Gated on privacy consent: the third-party Open-Meteo request and the
+ * sessionStorage cache happen only once the visitor has accepted. Revoking
+ * consent drops the cache and hides the widget.
  */
 export function Weather() {
+  const { allowed } = useConsent();
   const [data, setData] = useState<WeatherData | null>(null);
 
   useEffect(() => {
+    if (!allowed) {
+      // Undecided or revoked: never call out, never store, never show.
+      try {
+        sessionStorage.removeItem(CACHE_KEY);
+      } catch {
+        /* ignore blocked storage */
+      }
+      setData(null);
+      return;
+    }
+
     let alive = true;
 
     (async () => {
@@ -36,7 +53,7 @@ export function Weather() {
     return () => {
       alive = false;
     };
-  }, []);
+  }, [allowed]);
 
   if (!data) return null;
 

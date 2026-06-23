@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Weather } from "./Weather";
+import { PrivacyToggle } from "./PrivacyToggle";
 
 const SOCIALS = [
   { href: "https://github.com/adeildovieira", icon: Github, label: "GitHub" },
@@ -29,6 +30,10 @@ export function Footer() {
             </a>
           );
         })}
+        <span aria-hidden="true" className="select-none text-[#333]">
+          ✦
+        </span>
+        <PrivacyToggle />
       </div>
 
       <Weather />
