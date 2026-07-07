@@ -1,10 +1,10 @@
 # adeildo vieira — portfolio
 
-v0.7.0
+v0.7.1
 
 My personal site. It's a small, deliberate thing: four screens, no scrolling, black on black, the kind of monospace-leaning layout that feels like a terminal you'd actually want to sit in front of. It lives at [adeildovieira.com](https://adeildovieira.com).
 
-I rebuilt it from scratch in 2026. The version before this was a long, scrolling, glassmorphism affair; handsome enough, but it never really sounded like me. This one is quieter. Every route fills exactly one viewport, the content sits inside bordered "tables," and a live weather readout ticks away in the corner of the footer.
+I rebuilt it from scratch in 2026. The version before this was a long, scrolling, glassmorphism affair; handsome enough. This one is quieter. Every route fills exactly one viewport, the content sits inside bordered "tables," and a live weather readout ticks away in the corner of the footer.
 
 ## The idea
 

@@ -51,11 +51,16 @@ export function ConsentBanner() {
             className="text-xs leading-relaxed text-muted sm:text-[13px]"
           >
             this site sets <span className="text-fg">no tracking cookies</span>{" "}
-            and stores <span className="text-fg">no personal data</span>. the
-            footer&apos;s live weather is{" "}
-            <span className="text-fg">my</span> location (durham, nc) — not
-            yours. loading it calls a third-party api (open-meteo), which sees
-            your ip, and caches the result for this browser session.
+            and stores <span className="text-fg">no personal data</span>. I
+            use privacy-focused{" "}
+            <span className="text-fg">cloudflare web analytics</span> to
+            monitor site performance without cookies, and the snippet is{" "}
+            <span className="text-fg">excluded entirely for eu visitors</span>{" "}
+            compliant with gdpr and brazil&apos;s lgpd. the footer&apos;s
+            live weather is <span className="text-fg">my</span> location
+            (durham, nc), not yours. loading it calls a third-party api
+            (open-meteo), which sees your ip, and caches the result for this
+            browser session.
           </p>
 
           <div className="mt-4 flex items-center gap-3">
