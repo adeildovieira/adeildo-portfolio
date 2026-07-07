@@ -1,4 +1,20 @@
 # Cloudflare Pages headers.
+
+# --- Security headers (apply to every response) ---
+# CSP is scoped to what the site actually loads: same-origin assets, the inline
+# JSON-LD + Next hydration scripts ('unsafe-inline' — a static export cannot mint
+# per-request nonces), Tailwind/Framer inline styles, the data: noise SVG, and
+# the one third-party endpoint (Open-Meteo, for the weather widget).
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.open-meteo.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-DNS-Prefetch-Control: off
+
 # The build-time generated metadata images are emitted without a file
 # extension, so force their MIME type or social scrapers reject them.
 /opengraph-image

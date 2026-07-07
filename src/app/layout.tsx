@@ -3,6 +3,8 @@ import { Space_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Crosshair } from "@/components/terminal/Crosshair";
 import { MotionProvider } from "@/components/terminal/MotionProvider";
+import { ConsentProvider } from "@/components/terminal/ConsentProvider";
+import { ConsentBanner } from "@/components/terminal/ConsentBanner";
 
 /**
  * Space Grotesk is the primary font for the new aesthetic.
@@ -116,8 +118,13 @@ export default function RootLayout({
           style={{ backgroundImage: "url('/grain.gif')" }}
         />
         
-        <Crosshair />
-        <MotionProvider>{children}</MotionProvider>
+        <ConsentProvider>
+          <Crosshair />
+          <MotionProvider>
+            {children}
+            <ConsentBanner />
+          </MotionProvider>
+        </ConsentProvider>
       </body>
     </html>
   );
