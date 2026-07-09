@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const LINKS = [
+/** Route order — also drives ScrollNavMain's wheel/swipe-to-navigate. */
+export const LINKS = [
   { href: "/", label: "index" },
   { href: "/experience", label: "experience" },
   { href: "/projects", label: "projects" },
