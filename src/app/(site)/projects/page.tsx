@@ -1,4 +1,19 @@
+import type { Metadata } from "next";
 import { Reveal } from "@/components/terminal/Reveal";
+
+const DESCRIPTION =
+  "An on-device ESP32 workout coach, an evaluation of ROME and MEMIT knowledge editing on GPT-2, a full-stack marketplace, and more — selected work by Adeildo Vieira.";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: DESCRIPTION,
+  alternates: { canonical: "/projects" },
+  openGraph: {
+    url: "/projects",
+    title: "Projects - Adeildo Vieira",
+    description: DESCRIPTION,
+  },
+};
 
 interface Project {
   idx: string;
@@ -63,8 +78,8 @@ const PROJECTS: Project[] = [
     title: "This Portfolio",
     tagline: "the site you're on",
     blurb:
-      "Retro-terminal, monospace, no-scroll. Next.js + TypeScript + Tailwind, embla drag-to-pull, live Open-Meteo weather, static-exported - built on a main/prod branch strategy with semantic versioning.",
-    stack: ["Cloudflare", "Next.js", "TypeScript", "Tailwind", "embla"],
+      "Monochrome, keyboard-navigable, statically exported to Cloudflare Pages at ~25KB per route. Next.js 16 + TypeScript + Tailwind v4, consent-gated Open-Meteo weather, a strict CSP, and a main/prod branch strategy with semantic versioning.",
+    stack: ["Cloudflare", "Next.js", "TypeScript", "Tailwind", "CSP"],
     href: "https://github.com/adeildovieira/adeildo-portfolio",
   },
 ];
@@ -77,8 +92,9 @@ function ProjectItem({ p }: { p: Project }) {
       <header className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
         {/* Bumped title from text-sm to text-base, sm:text-base to sm:text-lg */}
         <h2 className="text-base font-medium text-fg sm:text-lg">
-          {/* Bumped index from text-xs to text-sm */}
-          <span className="mr-3 font-mono text-sm text-muted/40">{p.idx}</span>
+          {/* Was text-muted/40 -> #313131 on black, 1.61:1 — effectively
+              invisible, and read aloud by screen readers as bare digits. */}
+          <span className="mr-3 font-mono text-sm text-muted">{p.idx}</span>
           {p.title} <span className="font-normal text-muted">— {p.tagline}</span>
         </h2>
         {p.href && (
@@ -86,8 +102,7 @@ function ProjectItem({ p }: { p: Project }) {
             href={p.href}
             target="_blank"
             rel="noopener noreferrer"
-            // Bumped link from text-xs to text-sm
-            className="mt-1 text-sm text-muted transition-colors duration-200 hover:text-fg hover:underline underline-offset-4 sm:mt-0"
+            className="mt-1 inline-flex min-h-11 items-center text-sm text-muted underline-offset-4 transition-colors duration-200 hover:text-fg hover:underline sm:mt-0"
           >
             {p.hrefLabel ?? "GitHub"} ↗
           </a>
@@ -99,12 +114,16 @@ function ProjectItem({ p }: { p: Project }) {
         {p.blurb}
       </p>
       
-      {/* Bumped tags from text-[11px] to text-xs, increased top padding */}
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-2 text-xs text-muted/80">
+      {/* Was text-muted/80 -> #626262, 3.44:1. Now 4.89:1. */}
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-2 text-xs text-muted">
         {p.stack.map((s, i) => (
           <span key={s} className="flex items-center gap-2">
             {s}
-            {i < p.stack.length - 1 && <span className="text-muted/30">•</span>}
+            {i < p.stack.length - 1 && (
+              <span aria-hidden="true" className="text-line-bright">
+                •
+              </span>
+            )}
           </span>
         ))}
       </div>
@@ -128,7 +147,7 @@ export default function ProjectsPage() {
             href="https://github.com/adeildovieira"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-muted transition-colors duration-200 hover:text-fg hover:underline underline-offset-4"
+            className="inline-flex min-h-11 items-center text-sm text-muted underline-offset-4 transition-colors duration-200 hover:text-fg hover:underline"
           >
             view all projects ↗
           </a>
