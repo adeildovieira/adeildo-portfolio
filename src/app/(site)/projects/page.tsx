@@ -31,8 +31,8 @@ const PROJECTS: Project[] = [
     title: "RepSense AI",
     tagline: "Microcontroller + OpenAI API workout coach",
     blurb:
-      "Gym rep counters don't say much. RepSense is a real-time, on-device coach that uses an ESP32-S3 and IMU data to analyze bench-press form and provide feedback - rep count, imbalance, tempo, rest quality - via the OpenAI API.",
-    stack: ["C", "ESP32", "IMU", "OpenAI API", "IoT"],
+      "Built a system that streams IMU data through the OpenAI API and displays bench-press feedback on rep count, imbalance, tempo and rest quality — on-device, in real time, on an ESP32.",
+    stack: ["C/C++", "ESP32", "OpenAI API"],
     href: "https://github.com/adeildovieira/RepSense-IoT-and-AI-Gym-Helper",
   },
   {
@@ -40,8 +40,8 @@ const PROJECTS: Project[] = [
     title: "Can LLMs Unlearn?",
     tagline: "Evaluating ROME & MEMIT Knowledge Editing Across GPT-2 Models",
     blurb:
-      "Tested whether an AI can be made to forget or correct specific facts without full retraining, a core question for privacy and the 'right to be forgotten.' Led the evaluation of two leading editing methods (ROME and MEMIT, Meng et al.) across GPT-2 model sizes, measuring whether edits worked, stayed contained, survived rephrasing, and kept the model fluent. Found that the smallest model corrupted unrelated facts and the largest failed to hold edits when they were rephrased, while mid-size models performed best",
-    stack: ["PyTorch", "Python", "NLP", "ML", "LLMs"],
+      "Tested the ROME and MEMIT model-editing algorithms across GPT-2 models for targeted fact correction without full retraining — the core question behind privacy and the 'right to be forgotten.' The smallest model corrupted unrelated facts and the largest failed to hold edits under rephrasing; mid-size models performed best.",
+    stack: ["Python", "PyTorch"],
     href: "https://docs.google.com/presentation/d/10Vp9TeQUrAgbz3R3MHKGxuFuVl-hxv3zXkx0wBsSz0M/edit?slide=id.p#slide=id.p",
     hrefLabel: "Presentation",
   },

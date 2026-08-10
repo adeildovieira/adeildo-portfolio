@@ -29,11 +29,11 @@ export default function AboutPage() {
         */}
         <div className="flex flex-col gap-7 text-[15px] lowercase leading-[1.8] text-muted sm:text-lg sm:leading-[1.8]">
           <p>
-            Hi, I&apos;m a 23-year-old software engineer. I&apos;ve recently earned a bachelor of science degree in computer science from duke university (blue devil forever!). I am originally from a small town in northeast brazil, from a place known as the brazilian caribbean, Alagoas, surrounded by beautiful beaches and rivers.
+            Hi, I&apos;m a 23-year-old software engineer. I&apos;ve recently earned a bachelor of science degree in computer science from duke university on a full scholarship (blue devil forever!). I am originally from a small town in northeast brazil, from a place known as the brazilian caribbean, Alagoas, surrounded by beautiful beaches and rivers.
           </p>
 
           <p>
-            i specialize in full-stack development, auth systems, and AI API/ML. i use <span className="text-fg underline decoration-muted/40 underline-offset-4">🐍 python</span>, <span className="text-fg underline decoration-muted/40 underline-offset-4">⚙️ c</span>, and <span className="text-fg underline decoration-muted/40 underline-offset-4">⚛️ react</span> to build everything from iot to analytics platforms. i work across <span className="text-fg underline decoration-muted/40 underline-offset-4">🍎 macos</span> and <span className="text-fg underline decoration-muted/40 underline-offset-4">🐧 linux</span>.
+            i specialize in identity and auth (oauth 2.0, oidc, pkce, entra id), backend systems, and applied ml. i use <span className="text-fg underline decoration-muted/40 underline-offset-4">🐍 python</span>, <span className="text-fg underline decoration-muted/40 underline-offset-4">⚙️ c</span>, and <span className="text-fg underline decoration-muted/40 underline-offset-4">⚛️ react</span> to build everything from iot to analytics platforms. i work across <span className="text-fg underline decoration-muted/40 underline-offset-4">🍎 macos</span> and <span className="text-fg underline decoration-muted/40 underline-offset-4">🐧 linux</span>, on <span className="text-fg underline decoration-muted/40 underline-offset-4">aws</span> and <span className="text-fg underline decoration-muted/40 underline-offset-4">azure</span>.
           </p>
 
           <p>

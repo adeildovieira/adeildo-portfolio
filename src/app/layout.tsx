@@ -28,8 +28,10 @@ export const metadata: Metadata = {
     default: "Adeildo Vieira - Software Engineer",
     template: "%s - Adeildo Vieira",
   },
+  // Proof, not credentials — the numbers are what a recruiter scans for in a
+  // SERP snippet, and this fits inside the ~155 characters Google renders.
   description:
-    "Adeildo Vieira - 2026 Duke University CS new grad. Software engineer. Prev. identity & auth at BTG Pactual; ML occupancy analytics at Duke Code+.",
+    "Software engineer, Duke CS 2026. Built single sign-on for 6,000+ employees and 8,000+ business clients at BTG Pactual — 47% faster login.",
   // No `keywords`: Google dropped the meta keywords tag in 2009 and Bing treats
   // stuffing it as a negative signal. The substantive terms live in the Person
   // schema's `knowsAbout` below, where a machine actually reads them.

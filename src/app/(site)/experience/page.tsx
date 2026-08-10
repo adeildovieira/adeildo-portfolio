@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Reveal } from "@/components/terminal/Reveal";
 
 const DESCRIPTION =
-  "Identity and auth at BTG Pactual, ML occupancy analytics at Duke Code+, and AI agent work with Microsoft — the roles behind Adeildo Vieira's engineering work.";
+  "Production SSO at BTG Pactual, occupancy ML for Duke Facilities, and an AI agent built with Microsoft — Adeildo Vieira's engineering experience.";
 
 export const metadata: Metadata = {
   title: "Experience",
@@ -24,14 +24,30 @@ interface Role {
   stack: string[];
 }
 
+/**
+ * Ordered most-recent first, matching the résumé. Every figure here is quoted
+ * from it — if the résumé changes, this changes with it, because a recruiter
+ * who opens both will compare them.
+ */
+
 const ROLES: Role[] = [
   {
-    role: "Founding Software Engineer",
-    org: "Stealth AI Startup",
-    where: "USA",
-    dates: "May 2026–Present",
-    impact: "",
-    stack: ["AI API", "OpenAI", "OIDC", "HTTPS", "TypeScript", "React", "Next.js"],
+    role: "Data Analytics Fellow (Analyst, IT)",
+    org: "Duke University",
+    where: "Durham, NC",
+    dates: "Starts Aug 2026",
+    impact:
+      "Building production data workflows, dimensional warehouse models, and dashboards for Duke and Duke Health research.",
+    stack: ["SQL", "Dimensional modeling", "ETL", "Dashboards"],
+  },
+  {
+    role: "Founding Software Engineer, Backend",
+    org: "Aquara.ai",
+    where: "Philadelphia, PA",
+    dates: "Jul 2026–Present",
+    impact:
+      "Building the backend for an AWS-to-Azure database migration, and the authentication flows on top of it.",
+    stack: ["AWS", "Azure", "Authentication", "Backend"],
   },
   {
     role: "Software Engineer Intern",
@@ -39,8 +55,17 @@ const ROLES: Role[] = [
     where: "São Paulo, BR",
     dates: "Jun–Aug 2025",
     impact:
-      "Built 'Login with BTG ID' (OIDC, OAuth 2.0, PKCE) with a feature-flagged rollout, logging/telemetry, and Redis-backed session state. Cut sign-in time 47% toward a 1-second target, for 8,000+ small businesses and 5,000+ clients.",
-    stack: ["OIDC", "OAuth 2.0", "PKCE", "Redis", "Telemetry"],
+      "Built and shipped “Log in with BTG ID”, a production distributed SSO service giving 6,000+ employees and 8,000+ small-business clients one authentication path across BTG Pay products. Cut authentication latency 47% toward a 1-second target by caching session state in Redis, and personalized content on EXAME, BTG's news platform, by connecting GraphQL banking-profile data to the OAuth 2.0 flow. Owned rollout and reliability — authored the RFC, shipped behind feature flags, and restored service within SLA leading incident triage with live telemetry and a fallback path.",
+    stack: ["OAuth 2.0", "OIDC", "PKCE", "TypeScript", "Node.js", "GraphQL", "Redis"],
+  },
+  {
+    role: "Technical Assistant, Prototyping & Fabrication",
+    org: "Duke OIT Innovation Co-Lab",
+    where: "Durham, NC",
+    dates: "Jun 2023–Dec 2024",
+    impact:
+      "Cut 3D-printing turnaround from 3+ to 1–2 business days by managing end-to-end delivery for 24 stakeholders. Held client satisfaction at 95% while producing 47 custom models for Duke Health research and standardizing production specifications.",
+    stack: ["Prototyping", "Fabrication", "Process design"],
   },
   {
     role: "Software Engineering and AI Mentee",
@@ -48,26 +73,17 @@ const ROLES: Role[] = [
     where: "New York City, NY",
     dates: "Jul–Aug 2024",
     impact:
-      "Built MealPilot, a conversational AI agent that finds healthier food options across the NYC metro area, combining Microsoft Copilot Studio with Azure Maps for location and place search. Cut a 5-minute manual search to about 45 seconds.",
-    stack: ["Azure Maps API", "Copilot Studio", "Python", "Figma", "AI Agent Design"],
+      "Cut healthy-food search time 85% — from 5 minutes to 45 seconds, at 80% task success — by building MealPilot with Microsoft Copilot Studio and the Azure Maps API. Selected as 1 of 18 students nationwide for the Microsoft NYC Summer Mentorship Program and AI Hackathon.",
+    stack: ["Copilot Studio", "Azure Maps API", "Python", "AI agents"],
   },
   {
-    role: "Software Engineer Intern",
-    org: "Duke Code+ Program",
+    role: "Software Engineer Intern (Code+ Program)",
+    org: "Duke University",
     where: "Durham, NC",
-    dates: "May–Aug 2024",
+    dates: "May–Jul 2024",
     impact:
-      "Shipped a Docker-containerized, ML-based occupancy-analytics platform for Duke Facilities — REST + PostgreSQL, models trained on 2M+ Wi-Fi and CO2 datapoints. Saved staff roughly 2 hours a day previously spent pulling the data by hand.",
-    stack: ["Docker", "PostgreSQL", "scikit-learn", "REST", "Linux"],
-  },
-  {
-    role: "3D Printing Lead",
-    org: "Duke OIT Innovation Co-Lab",
-    where: "Durham, NC",
-    dates: "Jun 2023–Dec 2024",
-    impact:
-      "Owned end-to-end 3D-printing delivery for 24 stakeholders, produced 47 custom models for health research, and standardized the intake and handoff workflows. Turnaround dropped from 3+ business days to 1-2.",
-    stack: ["Hardware", "Workflow", "Docs"],
+      "Saved Duke Facilities 2 hours a day on data requests by deploying a dashboard backed by a REST API, Docker, Linux and Postgres. Reached 95% precision on three-class occupancy classification and a cross-validated R² of 0.72 on regression, training scikit-learn models on 2M+ anonymized Wi-Fi and CO₂ records, then built WCAG-aligned visualizations with Facilities across 4 Agile sprints to support HVAC planning.",
+    stack: ["Docker", "Linux", "PostgreSQL", "REST", "Python", "Scikit-Learn"],
   },
 ];
 
