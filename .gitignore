@@ -24,6 +24,16 @@
 .DS_Store
 *.pem
 
+# local tooling output — screenshot/debug artifacts from browser automation.
+# These were picked up by accidental `git add -A` commits more than once.
+.shots/
+.playwright-mcp/
+
+# iCloud placeholder stubs, in case a copy of this repo ever sits in a
+# synced folder again. node_modules under iCloud evicts to dataless files
+# and breaks `next dev` with ERR_INVALID_PACKAGE_CONFIG.
+*.icloud
+
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -37,7 +37,11 @@ export function ConsentBanner() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 12 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed bottom-16 left-1/2 z-50 w-[min(100%-2rem,460px)] -translate-x-1/2 border border-line bg-bg/95 p-4 backdrop-blur-sm outline-none sm:p-5"
+          // A slim full-width bar sitting just above the footer, rather than a
+          // tall centred panel. The panel form covered the hero wordmark and
+          // the only call to action on the landing page — the first thing a
+          // visitor saw was a privacy notice, not the name.
+          className="fixed inset-x-4 bottom-20 z-50 mx-auto flex max-w-4xl flex-col gap-3 border border-line bg-bg/95 p-4 backdrop-blur-sm outline-none sm:flex-row sm:items-center sm:justify-between sm:gap-6"
         >
           <span
             id="consent-title"
@@ -46,44 +50,38 @@ export function ConsentBanner() {
             privacy
           </span>
 
-          <p
-            id="consent-body"
-            className="text-xs leading-relaxed text-muted sm:text-[13px]"
-          >
-            this site sets <span className="text-fg">no tracking cookies</span>{" "}
-            and stores <span className="text-fg">no personal data</span>. I
-            use privacy-focused{" "}
-            <span className="text-fg">cloudflare web analytics</span> to
-            monitor site performance without cookies, and the snippet is{" "}
-            <span className="text-fg">excluded entirely for eu visitors</span>{" "}
-            compliant with gdpr and brazil&apos;s lgpd. the footer&apos;s
-            live weather is <span className="text-fg">my</span> location
-            (durham, nc), not yours. loading it calls a third-party api
-            (open-meteo), which sees your ip, and caches the result for this
-            browser session.
+          {/*
+            This copy states only what the code actually does. The previous
+            version claimed Cloudflare Web Analytics was running and that the
+            snippet was "excluded entirely for eu visitors" — neither is true:
+            no analytics snippet exists in this codebase, the CDN-injected
+            beacon is blocked by this site's own CSP, and there is no
+            region-detection logic anywhere. A privacy notice that describes
+            behaviour the code does not implement is worse than no notice.
+          */}
+          <p id="consent-body" className="text-xs leading-relaxed text-muted">
+            <span className="text-fg">no cookies, no analytics.</span> the only
+            third-party request is the footer&apos;s live weather — open-meteo,
+            for <span className="text-fg">my</span> location (durham, nc), not
+            yours. it sees your ip. declining just leaves the weather off.
           </p>
 
-          <div className="mt-4 flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-3">
             <button
               type="button"
               onClick={accept}
-              className="border border-line px-3 py-1.5 text-xs tracking-wide text-muted transition-colors duration-200 hover:border-line-bright hover:text-fg"
+              className="inline-flex min-h-11 items-center border border-line px-4 text-xs tracking-wide text-muted transition-colors duration-200 hover:border-line-bright hover:text-fg"
             >
               [ accept ]
             </button>
             <button
               type="button"
               onClick={decline}
-              className="border border-line px-3 py-1.5 text-xs tracking-wide text-muted transition-colors duration-200 hover:border-line-bright hover:text-fg"
+              className="inline-flex min-h-11 items-center border border-line px-4 text-xs tracking-wide text-muted transition-colors duration-200 hover:border-line-bright hover:text-fg"
             >
               [ decline ]
             </button>
           </div>
-
-          <p className="mt-3 text-[10px] text-muted">
-            change anytime via{" "}
-            <span className="text-fg/70">privacy</span> in the footer.
-          </p>
         </motion.div>
       )}
     </AnimatePresence>

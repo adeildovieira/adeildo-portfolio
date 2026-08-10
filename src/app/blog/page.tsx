@@ -110,24 +110,43 @@ export default function BlogPage() {
   return (
     <main className="relative min-h-screen bg-background pt-32 pb-24 px-6">
       <div className="mx-auto max-w-4xl text-center">
-        {/* Back Link */}
+        {/*
+          /blog is reachable from search but is not in the primary nav, so this
+          row is the only way back into the site. It previously offered "Back to
+          blog section" pointing at /#blog — an anchor that stopped existing
+          when the single-page layout was retired. Now it lists the real routes.
+        */}
         <FadeUp>
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-sm text-foreground-muted hover:text-opalite-400 transition-colors"
-            >
-              <ArrowLeft size={16} />
-              Back to home
-            </Link>
-            <span className="text-foreground-muted/50">|</span>
-            <Link
-              href="/#blog"
-              className="inline-flex items-center gap-2 text-sm text-foreground-muted hover:text-opalite-400 transition-colors"
-            >
-              Back to blog section
-            </Link>
-          </div>
+          <nav aria-label="Site" className="mb-8">
+            <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+              <li>
+                <Link
+                  href="/"
+                  className="inline-flex min-h-11 items-center gap-2 px-2 text-sm text-foreground-muted transition-colors hover:text-opalite-400"
+                >
+                  <ArrowLeft size={16} aria-hidden="true" />
+                  Home
+                </Link>
+              </li>
+              {[
+                { href: "/experience", label: "Experience" },
+                { href: "/projects", label: "Projects" },
+                { href: "/about", label: "About" },
+              ].map((link) => (
+                <li key={link.href} className="flex items-center gap-2">
+                  <span aria-hidden="true" className="text-foreground-muted">
+                    |
+                  </span>
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center px-2 text-sm text-foreground-muted transition-colors hover:text-opalite-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </FadeUp>
 
         {/* Section Header */}

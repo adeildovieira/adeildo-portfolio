@@ -31,11 +31,18 @@
   --color-line: var(--line);
   --color-line-bright: var(--line-bright);
 
-  /* The ONLY font family on the site is monospace.
-     Departure Mono (local) can be slotted in front later. */
-  --font-mono: var(--font-jetbrains), var(--font-geist-mono), ui-monospace,
+  /* Space Grotesk carries display + body; Geist Mono carries metrics and code.
+     Both names MUST match the `variable` given to next/font in layout.tsx.
+
+     Every var() here has an inline fallback on purpose. An unresolved var()
+     with no fallback makes the whole font-family declaration invalid at
+     computed-value time — the browser discards the entire list rather than
+     skipping to the next family, and the site silently drops to the system
+     font. A dangling `--font-jetbrains` reference did exactly that here. */
+  --font-sans: var(--font-space-grotesk, ui-sans-serif), ui-sans-serif,
+    system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono, ui-monospace), ui-monospace,
     SFMono-Regular, Menlo, monospace;
-  --font-sans: var(--font-jetbrains), var(--font-geist-mono), ui-monospace, monospace;
 
   /* retained for /blog */
   --color-background: var(--background);
@@ -56,8 +63,12 @@ html {
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-mono);
-  font-feature-settings: "liga" 0; /* terminal feel: no ligatures */
+  /* var(--font-sans), not --font-mono. This rule is unlayered, and unlayered
+     declarations outrank anything in @layer utilities — so it beats the
+     `font-sans` class on the same element no matter the specificity. Pointing
+     it at --font-mono silently made the entire site monospace. Mono is still
+     available via the font-mono utility for metrics and code. */
+  font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -106,7 +117,12 @@ body {
    ============================================================ */
 .film-grain {
   position: fixed;
-  inset: -150%;
+  /* -50% (a 2x-viewport layer) is the smallest inset that still keeps the
+     surface covered given the <=12% drift in grain-shift, and it matters:
+     will-change promotes this to its own GPU texture, so area is memory.
+     At -150% the layer was 4x the viewport per axis — ~83 MB of VRAM on a
+     1440x900 screen. At -50% it is ~21 MB for an identical visual result. */
+  inset: -50%;
   z-index: 1;
   pointer-events: none;
   opacity: 0.045;

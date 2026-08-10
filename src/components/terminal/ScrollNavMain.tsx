@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { ReactNode, useEffect, useRef } from "react";
-import { LINKS } from "./Nav";
+import { LINKS } from "@/lib/routes";
 
 const ROUTES = LINKS.map((l) => l.href);
 
@@ -84,7 +84,13 @@ export function ScrollNavMain({ children }: { children: ReactNode }) {
       ref={ref}
       className="flex-1 overflow-y-auto overflow-x-hidden overscroll-contain"
     >
-      <div className="mx-auto flex min-h-full w-full max-w-6xl items-center justify-center px-5 py-20 sm:px-8 sm:py-24">
+      {/*
+        Vertical padding must clear the fixed chrome at rest, or the first and
+        last lines of a page sit under it. Nav is now ~80px tall (12 + 44 hit
+        box + 24) and Footer ~76px (24 + 44 + 8); py-28/py-32 leaves real
+        breathing room on top of that rather than butting against it.
+      */}
+      <div className="mx-auto flex min-h-full w-full max-w-6xl items-center justify-center px-5 py-28 sm:px-8 sm:py-32">
         {children}
       </div>
     </main>

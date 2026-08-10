@@ -1,4 +1,19 @@
+import type { Metadata } from "next";
 import { Reveal } from "@/components/terminal/Reveal";
+
+const DESCRIPTION =
+  "Software engineer, Duke CS 2026, originally from Alagoas in northeast Brazil. Full-stack, auth systems, and AI/ML — plus digital literacy work in Brazil's interior.";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: DESCRIPTION,
+  alternates: { canonical: "/about" },
+  openGraph: {
+    url: "/about",
+    title: "About - Adeildo Vieira",
+    description: DESCRIPTION,
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -14,7 +29,7 @@ export default function AboutPage() {
         */}
         <div className="flex flex-col gap-7 text-[15px] lowercase leading-[1.8] text-muted sm:text-lg sm:leading-[1.8]">
           <p>
-            Hi, I'm a 23-year-old software engineer. I've recently earned a bachelor of science degree in computer science from duke university (blue devil forever!). I am originally from a small town in northeast brazil, from a place known as the brazilian caribbean, Alagoas, surrounded by beautiful beaches and rivers.
+            Hi, I&apos;m a 23-year-old software engineer. I&apos;ve recently earned a bachelor of science degree in computer science from duke university (blue devil forever!). I am originally from a small town in northeast brazil, from a place known as the brazilian caribbean, Alagoas, surrounded by beautiful beaches and rivers.
           </p>
 
           <p>
@@ -26,7 +41,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            outside of code, i care deeply about digital literacy and bridging the digital divide in brazil's interior through initiatives like espaço 4.0. when i'm offline, you can find me listening to mpb and regional nordeste music, reading literature, or studying astronomy and film.
+            outside of code, i care deeply about digital literacy and bridging the digital divide in brazil&apos;s interior through initiatives like espaço 4.0. when i&apos;m offline, you can find me listening to mpb and regional nordeste music, reading literature, or studying astronomy and film.
           </p>
 
           <p>
