@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/terminal/Reveal";
 import { AsciiArt, STARFIELD } from "@/components/terminal/AsciiArt";
+import { RESUME_URL } from "@/lib/routes";
 
 /**
  * revamped as a sleek, terminal-inspired landing page with a starfield background, oversized monospaced name, and a subtle developer-style
@@ -43,7 +44,7 @@ export default function IndexPage() {
 
       <Reveal delay={0.24}>
         <a
-          href="/Adeildo_Vieira_Silva_Neto_Resume.pdf"
+          href={RESUME_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 inline-flex min-h-11 items-center text-xs text-muted underline-offset-4 transition-colors duration-200 hover:text-fg hover:underline sm:mt-6"

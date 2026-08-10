@@ -20,3 +20,18 @@ export const LINKS: SiteLink[] = [
   { href: "/projects", label: "projects" },
   { href: "/about", label: "about me" },
 ];
+
+/**
+ * Résumé, hosted on Google Drive rather than committed to public/.
+ *
+ * Declared once so the two links that point at it cannot drift apart, and so
+ * swapping the document later is a one-line change. Keeping a copy in the repo
+ * meant every revision needed a commit and a deploy, and the version that
+ * shipped fell behind the site — /experience listed roles the linked PDF did
+ * not contain.
+ *
+ * This is the /view share link, which opens Drive's viewer. Use
+ * /uc?export=download&id=... instead if a direct download is ever wanted.
+ */
+export const RESUME_URL =
+  "https://drive.google.com/file/d/1W_eyDr1ei0peAxuAjsWjZFpmSeCmmuuw/view";

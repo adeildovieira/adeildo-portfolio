@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/terminal/Reveal";
+import { RESUME_URL } from "@/lib/routes";
 
 const DESCRIPTION =
   "Production SSO at BTG Pactual, occupancy ML for Duke Facilities, and an AI agent built with Microsoft — Adeildo Vieira's engineering experience.";
@@ -145,7 +146,7 @@ export default function ExperiencePage() {
           
           {/* Bumped link from text-xs to text-sm */}
           <a
-            href="/Adeildo_Vieira_Silva_Neto_Resume.pdf"
+            href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-11 items-center text-sm text-muted underline-offset-4 transition-colors duration-200 hover:text-fg hover:underline"
