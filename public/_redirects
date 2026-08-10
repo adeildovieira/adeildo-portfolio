@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects.
+
+# The résumé used to be committed at this path and was live for months, so it
+# may sit in bookmarks, in an indexed URL, or in a copy of the CV already sent
+# out. It now lives on Google Drive; forward rather than 404.
+# 302 rather than 301 on purpose — the Drive URL is the kind of thing that
+# changes, and a permanently-cached redirect would be painful to undo.
+/Adeildo_Vieira_Silva_Neto_Resume.pdf  https://drive.google.com/file/d/1W_eyDr1ei0peAxuAjsWjZFpmSeCmmuuw/view  302
