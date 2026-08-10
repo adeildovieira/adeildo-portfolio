@@ -1,14 +1,19 @@
+import type { Metadata } from "next";
 import { BlogPostClient } from "./BlogPostClient";
 
 /**
  * Blog Post Page
- * 
+ *
  * Dynamic page for individual blog posts.
  */
 
 interface BlogPostContent {
   title: string;
   date: string;
+  /** ISO 8601 — drives og:published_time and the sitemap's lastmod. */
+  datePublished: string;
+  /** One-sentence summary. Serves as the meta description and og:description. */
+  excerpt: string;
   readTime: string;
   tags: string[];
   content: React.ReactNode;
@@ -18,6 +23,9 @@ const blogPosts: Record<string, BlogPostContent> = {
   "lessons-first-internship": {
     title: "Lessons from My First Internship, the Code+ Program at Duke",
     date: "Feb 16, 2026",
+    datePublished: "2026-02-16",
+    excerpt:
+      "What a summer on Duke's Campus Space and Management team taught me about stakeholder relations, trade-offs, and building something people actually use.",
     readTime: "5 min read",
     tags: ["Career", "Learning", "Teamwork"],
     content: (
@@ -106,6 +114,9 @@ const blogPosts: Record<string, BlogPostContent> = {
   "last-name-grandson": {
     title: "My last last name is grandson. In portuguese.",
     date: "Feb 05, 2026",
+    datePublished: "2026-02-05",
+    excerpt:
+      "Adeildo Vieira Silva Neto. Neto means grandson in Portuguese — it is my grandfather's name, and why I introduce myself as Ade.",
     readTime: "2 min read",
     tags: ["Reflections"],
     content: (
@@ -158,6 +169,34 @@ export function generateStaticParams() {
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+/**
+ * Per-post metadata. Without this every post inherited the root layout's
+ * title and description, so all seven URLs on the site were indistinguishable
+ * to search engines, social scrapers, and browser tabs alike.
+ */
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts[slug];
+  if (!post) return {};
+
+  const url = `/blog/${slug}`;
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: post.datePublished,
+      authors: ["Adeildo Vieira"],
+      tags: post.tags,
+    },
+    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt },
+  };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {

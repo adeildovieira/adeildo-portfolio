@@ -33,7 +33,7 @@ export default function IndexPage() {
           href="/Adeildo_Vieira_Silva_Neto_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-block text-xs text-muted transition-colors duration-200 hover:text-fg hover:underline underline-offset-4 sm:mt-8"
+          className="mt-4 inline-flex min-h-11 items-center text-xs text-muted underline-offset-4 transition-colors duration-200 hover:text-fg hover:underline sm:mt-6"
         >
           [ view resume ]
         </a>

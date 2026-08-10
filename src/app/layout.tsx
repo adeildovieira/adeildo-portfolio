@@ -28,29 +28,14 @@ export const metadata: Metadata = {
     default: "Adeildo Vieira - Software Engineer",
     template: "%s - Adeildo Vieira",
   },
+  // Proof, not credentials — the numbers are what a recruiter scans for in a
+  // SERP snippet, and this fits inside the ~155 characters Google renders.
   description:
-    "Adeildo Vieira - 2026 Duke University CS new grad. Software engineer. Prev. identity & auth at BTG Pactual; ML occupancy analytics at Duke Code+.",
-  keywords: [
-    "Adeildo Vieira",
-    "Adeildo Vieira Silva Neto",
-    "Software Engineer",
-    "New Grad",
-    "Duke University",
-    "Ex-Aluno IFAL Santana",
-    "BTG Pactual",
-    "OAuth 2.0",
-    "OIDC",
-    "Next.js",
-    "TypeScript",
-    "AI Developer",
-    "ML Engineer",
-    "Full-Stack Developer",
-    "Python",
-    "C",
-    "React",
-    "MacOS",
-    "Linux",
-  ],
+    "Software engineer, Duke CS 2026. Built single sign-on for 6,000+ employees and 8,000+ business clients at BTG Pactual — 47% faster login.",
+  // No `keywords`: Google dropped the meta keywords tag in 2009 and Bing treats
+  // stuffing it as a negative signal. The substantive terms live in the Person
+  // schema's `knowsAbout` below, where a machine actually reads them.
+  alternates: { canonical: "/" },
   authors: [{ name: "Adeildo Vieira" }],
   creator: "Adeildo Vieira",
   openGraph: {
@@ -76,7 +61,9 @@ export const viewport: Viewport = {
   themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  // No maximumScale: capping it at 1 disables pinch-zoom on Android browsers,
+  // which is a WCAG 1.4.4 (resize text) failure. The usual justification —
+  // stopping iOS input-focus zoom — does not apply: this site has no inputs.
 };
 
 const personSchema = {
@@ -98,26 +85,24 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    // 1. Removed inline style={{ backgroundColor: "#000" }} 
-    <html lang="en">
-      <body
-        // 2. Swapped to Space Grotesk and Geist Mono variables
-        // 3. Removed bg-bg so it's transparent, added 'relative' for z-index stacking
-        className={`${spaceGrotesk.variable} ${geistMono.variable} relative font-sans text-fg crosshair-cursor`}
-      >
+    // The next/font `variable` classes belong on <html>, not <body>. Tailwind
+    // declares --font-sans on :root, and a var() inside a custom property is
+    // resolved against the element that declares it — so --font-space-grotesk
+    // has to exist on :root too, or :root silently falls back.
+    <html lang="en" className={`${spaceGrotesk.variable} ${geistMono.variable}`}>
+      <body className="relative bg-bg font-sans text-fg crosshair-cursor">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        
-        {/* --- GRAIN BACKGROUND --- */}
-        {/* 4. Added bg-[#000] here so the black background exists behind the grain */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 z-[-1] h-full w-full bg-[#000] bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/grain.gif')" }}
-        />
-        
+
+        {/*
+          Film grain. This was a 2.9 MB animated GIF fetched on every page view;
+          it is now the inline-SVG fractal-noise overlay defined in globals.css
+          — zero network bytes, same look, and frozen under reduced motion.
+        */}
+        <div aria-hidden="true" className="film-grain" />
+
         <ConsentProvider>
           <Crosshair />
           <MotionProvider>
